@@ -1,19 +1,971 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>囍莉旅遊｜電子優惠券</title>
+<title>囍莉旅遊｜電子優惠券</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Microsoft JhengHei", Arial, sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 190, 210, 0.35) 0 4px, transparent 5px),
+    radial-gradient(circle at 80% 10%, rgba(180, 220, 255, 0.4) 0 5px, transparent 6px),
+    radial-gradient(circle at 30% 80%, rgba(200, 240, 210, 0.4) 0 4px, transparent 5px),
+    linear-gradient(135deg, #fff7fa, #f5fbff, #f8fff8);
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* 櫻花裝飾 */
+.sakura {
+  position: fixed;
+  font-size: 24px;
+  opacity: 0.7;
+  animation: fall 8s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.s1 { left: 8%; animation-delay: 0s; }
+.s2 { left: 25%; animation-delay: 2s; font-size: 18px; }
+.s3 { left: 50%; animation-delay: 4s; }
+.s4 { left: 75%; animation-delay: 1s; font-size: 20px; }
+.s5 { left: 92%; animation-delay: 5s; }
+
+@keyframes fall {
+  0% {
+    top: -50px;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    top: 100vh;
+    transform: rotate(360deg);
+  }
+}
+
+/* 右側風鈴 */
+.wind-chime {
+  position: fixed;
+  right: 25px;
+  top: 15px;
+  font-size: 55px;
+  z-index: 10;
+  animation: swing 2s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes swing {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 700px;
+  margin: auto;
+  padding: 40px 0;
+}
+
+/* Logo */
+.logo {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  color: white;
+  text-shadow:
+    2px 2px 0 #f39ab5,
+    4px 4px 10px rgba(0,0,0,0.15);
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.logo-bg {
+  background: #ffb6c9;
+  padding: 18px 35px;
+  border-radius: 45% 55% 50% 40%;
+  display: inline-block;
+  transform: rotate(-2deg);
+  box-shadow: 0 8px 20px rgba(255,150,180,0.3);
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #777;
+  font-size: 16px;
+}
+
+/* 卡片 */
+.card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 25px;
+  padding: 28px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border: 2px solid rgba(255,255,255,0.8);
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* 工作人員登入 */
+.login-box {
+  text-align: center;
+}
+
+.login-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #eee;
+  font-size: 16px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #ff9fba;
+}
+
+/* 按鈕 */
+button {
+  border: none;
+  padding: 14px 20px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-pink {
+  background: #ff9fba;
+  color: white;
+}
+
+.btn-blue {
+  background: #8ecdf5;
+  color: white;
+}
+
+.btn-green {
+  background: #91d6a2;
+  color: white;
+}
+
+.btn-gray {
+  background: #eee;
+  color: #555;
+}
+
+/* 後台 */
+#staffPanel {
+  display: none;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* 功能區塊 */
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* 優惠券 */
+.coupon {
+  background: linear-gradient(135deg, #fff0f5, #f0f9ff);
+  border: 2px dashed #ff9fba;
+  border-radius: 25px;
+  padding: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.coupon h3 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.coupon-code {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6f9d;
+  letter-spacing: 2px;
+  margin: 15px 0;
+}
+
+.qr-box {
+  margin: 20px auto;
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.qr-box canvas {
+  max-width: 100%;
+}
+
+/* 核銷結果 */
+.result {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  display: none;
+}
+
+.success {
+  background: #e8faec;
+  color: #27803b;
+}
+
+.error {
+  background: #fff0f0;
+  color: #d64b4b;
+}
+
+/* 手機 */
+@media (max-width: 600px) {
+
+  .container {
+    width: 94%;
+    padding-top: 30px;
+  }
+
+  .logo {
+    font-size: 32px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .wind-chime {
+    font-size: 40px;
+    right: 10px;
+  }
+
+}
+</style>
 </head>
 
 <body>
 
-  <h1>🎉 囍莉旅遊</h1>
+<!-- 櫻花 -->
+<div class="sakura s1">🌸</div>
+<div class="sakura s2">🌸</div>
+<div class="sakura s3">🌸</div>
+<div class="sakura s4">🌸</div>
+<div class="sakura s5">🌸</div>
 
-  <h2>電子優惠券系統測試成功！</h2>
+<!-- 風鈴 -->
+<div class="wind-chime">🎐</div>
 
-  <p>工作人員後台正在建置中 🌸</p>
+<div class="container">
+
+  <!-- 標題 -->
+
+  <div style="text-align:center;">
+    <div class="logo-bg">
+      <div class="logo">🎉 囍莉旅遊</div>
+    </div>
+  </div>
+
+  <div class="subtitle">
+    電子優惠券系統 🎫
+  </div>
+
+
+  <!-- 登入 -->
+
+  <div class="card" id="loginPanel">
+
+    <div class="login-box">
+
+      <div class="login-icon">
+        🔐
+      </div>
+
+      <div class="login-title">
+        工作人員驗證
+      </div>
+
+      <input
+        type="password"
+        id="pinInput"
+        placeholder="輸入 PIN"
+      >
+
+      <button
+        class="btn-pink"
+        onclick="login()"
+      >
+        🌸 進入囍莉旅遊後台
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- 後台 -->
+
+  <div id="staffPanel">
+
+    <div class="card">
+
+      <h2>
+        🌸 囍莉旅遊工作人員後台
+      </h2>
+
+      <div class="menu-buttons">
+
+        <button
+          class="btn-pink"
+          onclick="showSection('createSection')"
+        >
+          🎫 建立優惠券
+        </button>
+
+        <button
+          class="btn-blue"
+          onclick="showSection('redeemSection')"
+        >
+          📷 核銷優惠券
+        </button>
+
+        <button
+          class="btn-green"
+          onclick="showSection('listSection')"
+        >
+          📋 優惠券紀錄
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 建立優惠券 -->
+
+    <div
+      class="card section"
+      id="createSection"
+    >
+
+      <h2>
+        🎫 建立新優惠券
+      </h2>
+
+      <input
+        type="text"
+        id="couponName"
+        placeholder="優惠券名稱，例如：台南一日遊折價券"
+      >
+
+      <input
+        type="number"
+        id="couponAmount"
+        placeholder="優惠金額，例如：100"
+      >
+
+      <button
+        class="btn-pink"
+        onclick="createCoupon()"
+      >
+        🌸 建立優惠券
+      </button>
+
+
+      <div
+        id="newCoupon"
+        class="coupon"
+        style="display:none;"
+      >
+
+        <h3 id="newCouponName"></h3>
+
+        <div>
+          優惠金額
+        </div>
+
+        <h2 id="newCouponAmount"></h2>
+
+        <div class="coupon-code" id="newCouponCode"></div>
+
+        <div class="qr-box">
+
+          <canvas id="qrCanvas"></canvas>
+
+        </div>
+
+        <p>
+          請將此優惠券 QR Code 提供給客人
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- 核銷 -->
+
+    <div
+      class="card section"
+      id="redeemSection"
+    >
+
+      <h2>
+        📷 核銷優惠券
+      </h2>
+
+      <input
+        type="text"
+        id="redeemCode"
+        placeholder="輸入優惠券代碼"
+      >
+
+      <button
+        class="btn-blue"
+        onclick="redeemCoupon()"
+      >
+        ✅ 核銷優惠券
+      </button>
+
+      <div
+        id="redeemResult"
+        class="result"
+      ></div>
+
+    </div>
+
+
+    <!-- 紀錄 -->
+
+    <div
+      class="card section"
+      id="listSection"
+    >
+
+      <h2>
+        📋 優惠券紀錄
+      </h2>
+
+      <div id="couponList"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PIN 設定
+========================= */
+
+const STAFF_PIN = "1234";
+
+
+/* =========================
+   登入
+========================= */
+
+function login() {
+
+  const pin =
+    document.getElementById("pinInput").value;
+
+  if (pin === STAFF_PIN) {
+
+    document.getElementById(
+      "loginPanel"
+    ).style.display = "none";
+
+
+    document.getElementById(
+      "staffPanel"
+    ).style.display = "block";
+
+
+    showSection("createSection");
+
+
+  } else {
+
+    alert("PIN 錯誤，請重新輸入");
+
+  }
+
+}
+
+
+/* =========================
+   顯示功能
+========================= */
+
+function showSection(id) {
+
+  const sections =
+    document.querySelectorAll(".section");
+
+
+  sections.forEach(section => {
+
+    section.classList.remove("active");
+
+  });
+
+
+  document
+    .getElementById(id)
+    .classList
+    .add("active");
+
+
+  if (id === "listSection") {
+
+    renderCoupons();
+
+  }
+
+}
+
+
+/* =========================
+   取得優惠券資料
+========================= */
+
+function getCoupons() {
+
+  return JSON.parse(
+    localStorage.getItem("xiliCoupons")
+  ) || [];
+
+}
+
+
+/* =========================
+   儲存優惠券資料
+========================= */
+
+function saveCoupons(coupons) {
+
+  localStorage.setItem(
+    "xiliCoupons",
+    JSON.stringify(coupons)
+  );
+
+}
+
+
+/* =========================
+   產生優惠券
+========================= */
+
+function createCoupon() {
+
+  const name =
+    document.getElementById("couponName").value;
+
+  const amount =
+    document.getElementById("couponAmount").value;
+
+
+  if (!name || !amount) {
+
+    alert("請填寫優惠券名稱與金額");
+
+    return;
+
+  }
+
+
+  const code =
+    "XL" +
+    Date.now()
+      .toString()
+      .slice(-8) +
+    Math.floor(Math.random() * 1000);
+
+
+  const coupon = {
+
+    code: code,
+
+    name: name,
+
+    amount: amount,
+
+    used: false,
+
+    createdAt:
+      new Date()
+        .toLocaleString()
+
+  };
+
+
+  const coupons =
+    getCoupons();
+
+
+  coupons.push(coupon);
+
+
+  saveCoupons(coupons);
+
+
+  document.getElementById(
+    "newCoupon"
+  ).style.display = "block";
+
+
+  document.getElementById(
+    "newCouponName"
+  ).innerText = name;
+
+
+  document.getElementById(
+    "newCouponAmount"
+  ).innerText =
+    "NT$ " + amount;
+
+
+  document.getElementById(
+    "newCouponCode"
+  ).innerText = code;
+
+
+  drawQRCode(code);
+
+
+  alert("優惠券建立成功！");
+
+}
+
+
+/* =========================
+   QR Code
+   簡易視覺代碼
+========================= */
+
+function drawQRCode(text) {
+
+  const canvas =
+    document.getElementById("qrCanvas");
+
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  canvas.width = 220;
+
+  canvas.height = 220;
+
+
+  ctx.fillStyle = "white";
+
+  ctx.fillRect(
+    0,
+    0,
+    220,
+    220
+  );
+
+
+  const size = 10;
+
+
+  for (
+    let y = 0;
+    y < 22;
+    y++
+  ) {
+
+    for (
+      let x = 0;
+      x < 22;
+      x++
+    ) {
+
+      const char =
+        text.charCodeAt(
+          (x + y) % text.length
+        );
+
+
+      if (
+        (char + x * 7 + y * 3)
+        % 2 === 0
+      ) {
+
+        ctx.fillStyle = "#222";
+
+        ctx.fillRect(
+          x * size,
+          y * size,
+          size,
+          size
+        );
+
+      }
+
+    }
+
+  }
+
+
+  ctx.fillStyle = "#ff9fba";
+
+  ctx.font = "14px Arial";
+
+  ctx.textAlign = "center";
+
+  ctx.fillText(
+    "囍莉旅遊",
+    110,
+    210
+  );
+
+}
+
+
+/* =========================
+   核銷優惠券
+========================= */
+
+function redeemCoupon() {
+
+  const code =
+    document
+      .getElementById("redeemCode")
+      .value
+      .trim();
+
+
+  const result =
+    document.getElementById(
+      "redeemResult"
+    );
+
+
+  const coupons =
+    getCoupons();
+
+
+  const coupon =
+    coupons.find(
+      item => item.code === code
+    );
+
+
+  result.style.display = "block";
+
+
+  if (!coupon) {
+
+    result.className =
+      "result error";
+
+
+    result.innerHTML =
+      "❌ 找不到這張優惠券<br>請確認優惠券代碼是否正確";
+
+    return;
+
+  }
+
+
+  if (coupon.used) {
+
+    result.className =
+      "result error";
+
+
+    result.innerHTML =
+      "⚠️ 此優惠券已經核銷過了";
+
+    return;
+
+  }
+
+
+  coupon.used = true;
+
+  coupon.usedAt =
+    new Date()
+      .toLocaleString();
+
+
+  saveCoupons(coupons);
+
+
+  result.className =
+    "result success";
+
+
+  result.innerHTML =
+    `
+    🎉 核銷成功！<br><br>
+
+    優惠券：
+    ${coupon.name}<br>
+
+    金額：
+    NT$ ${coupon.amount}<br><br>
+
+    優惠券代碼：
+    ${coupon.code}
+    `;
+
+
+  document
+    .getElementById("redeemCode")
+    .value = "";
+
+}
+
+
+/* =========================
+   顯示優惠券紀錄
+========================= */
+
+function renderCoupons() {
+
+  const coupons =
+    getCoupons();
+
+
+  const list =
+    document.getElementById(
+      "couponList"
+    );
+
+
+  if (coupons.length === 0) {
+
+    list.innerHTML =
+      "<p style='text-align:center;'>目前還沒有優惠券</p>";
+
+    return;
+
+  }
+
+
+  let html = "";
+
+
+  coupons
+    .slice()
+    .reverse()
+    .forEach(coupon => {
+
+      html += `
+
+      <div
+        style="
+        background:#fff8fa;
+        border-radius:15px;
+        padding:15px;
+        margin-bottom:12px;
+        "
+      >
+
+        <strong>
+          ${coupon.name}
+        </strong>
+
+        <br>
+
+        💰 NT$
+        ${coupon.amount}
+
+        <br>
+
+        🎫
+        ${coupon.code}
+
+        <br>
+
+        狀態：
+        ${
+          coupon.used
+          ? "❌ 已核銷"
+          : "✅ 未使用"
+        }
+
+        <br>
+
+        建立時間：
+        ${coupon.createdAt}
+
+      </div>
+
+      `;
+
+    });
+
+
+  list.innerHTML = html;
+
+}
+
+</script>
 
 </body>
 </html>
