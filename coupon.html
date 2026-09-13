@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 
 <head>
-
-  <base target="_top">
 
   <meta charset="UTF-8">
 
@@ -11,6 +9,8 @@
     name="viewport"
     content="width=device-width, initial-scale=1"
   >
+
+  <title>囍莉旅遊優惠券</title>
 
   <!-- Google Fonts -->
 
@@ -30,6 +30,7 @@
     rel="stylesheet"
   >
 
+
 <style>
 
 /* =========================================
@@ -40,9 +41,11 @@
   box-sizing:border-box;
 }
 
+
 html{
   scroll-behavior:smooth;
 }
+
 
 body{
 
@@ -55,6 +58,7 @@ body{
   color:#5f4b55;
 
   overflow-x:hidden;
+
 
   background:
 
@@ -94,7 +98,7 @@ body{
 
 
 /* =========================================
-   背景裝飾
+   背景花朵
 ========================================= */
 
 .bg-flower{
@@ -111,6 +115,7 @@ body{
 
 }
 
+
 .flower-1{
 
   left:2%;
@@ -120,6 +125,7 @@ body{
   transform:rotate(-25deg);
 
 }
+
 
 .flower-2{
 
@@ -131,6 +137,7 @@ body{
 
 }
 
+
 .flower-3{
 
   left:3%;
@@ -140,6 +147,7 @@ body{
   transform:rotate(-15deg);
 
 }
+
 
 .flower-4{
 
@@ -216,6 +224,7 @@ body{
 
 }
 
+
 .header-flower{
 
   position:absolute;
@@ -224,11 +233,13 @@ body{
 
 }
 
+
 .header-flower.left{
 
   left:130px;
 
 }
+
 
 .header-flower.right{
 
@@ -236,9 +247,8 @@ body{
 
 }
 
-.brand-box{
 
-  position:relative;
+.brand-box{
 
   width:375px;
 
@@ -267,6 +277,7 @@ body{
 
 }
 
+
 .brand{
 
   color:white;
@@ -280,6 +291,7 @@ body{
   padding-left:16px;
 
 }
+
 
 .brand-sub{
 
@@ -301,11 +313,13 @@ body{
 
 }
 
+
 .brand-sub span{
 
   margin:0 10px;
 
 }
+
 
 .header-script{
 
@@ -370,6 +384,7 @@ body{
 
 }
 
+
 .coupon-inner{
 
   display:grid;
@@ -393,13 +408,8 @@ body{
 
   position:relative;
 
-  padding:
-    0
-    20px
-    0
-    0;
-
 }
+
 
 .status{
 
@@ -431,6 +441,7 @@ body{
 
 }
 
+
 .status.used{
 
   background:#f3d9df;
@@ -439,6 +450,7 @@ body{
 
 }
 
+
 .status.expired{
 
   background:#eee6e6;
@@ -446,6 +458,7 @@ body{
   color:#8b7777;
 
 }
+
 
 .discount-title{
 
@@ -463,9 +476,8 @@ body{
 
 }
 
-.discount{
 
-  position:relative;
+.discount{
 
   text-align:center;
 
@@ -479,56 +491,12 @@ body{
 
   font-weight:900;
 
-  letter-spacing:2px;
-
-  text-shadow:
-
-    0 10px 15px
-    rgba(180,70,110,.12);
-
 }
 
-.heart-doodle{
-
-  position:absolute;
-
-  right:8px;
-
-  top:105px;
-
-  font-size:80px;
-
-  color:#efb3c3;
-
-  font-family:cursive;
-
-  font-weight:300;
-
-}
-
-.left-travel-text{
-
-  position:absolute;
-
-  left:-3px;
-
-  top:135px;
-
-  color:#db8ea3;
-
-  font-size:16px;
-
-  line-height:1.6;
-
-  transform:rotate(-8deg);
-
-  text-align:center;
-
-}
 
 .info-box{
 
-  margin-top:15px;
+  margin-top:25px;
 
   border-radius:20px;
 
@@ -542,6 +510,7 @@ body{
     rgba(255,255,255,.5);
 
 }
+
 
 .info-row{
 
@@ -566,17 +535,20 @@ body{
 
 }
 
+
 .info-row:last-child{
 
   border-bottom:none;
 
 }
 
+
 .info-icon{
 
   font-size:22px;
 
 }
+
 
 .info-label{
 
@@ -588,6 +560,7 @@ body{
 
 }
 
+
 .info-value{
 
   font-size:18px;
@@ -597,6 +570,7 @@ body{
   color:#865363;
 
 }
+
 
 .travel-message{
 
@@ -650,9 +624,8 @@ body{
 
   justify-content:center;
 
-  padding-left:20px;
-
 }
+
 
 .qr-title{
 
@@ -688,6 +661,7 @@ body{
 
 }
 
+
 .qr-box{
 
   width:255px;
@@ -708,12 +682,8 @@ body{
     3px solid
     #eab6c4;
 
-  box-shadow:
-
-    0 10px 25px
-    rgba(210,100,135,.12);
-
 }
+
 
 .qr-box img{
 
@@ -724,6 +694,7 @@ body{
   object-fit:contain;
 
 }
+
 
 .travel-button{
 
@@ -749,12 +720,8 @@ body{
 
   font-weight:800;
 
-  box-shadow:
-
-    0 8px 18px
-    rgba(190,80,115,.18);
-
 }
+
 
 .travel-en{
 
@@ -775,10 +742,6 @@ body{
 
 .section-card{
 
-  position:relative;
-
-  overflow:hidden;
-
   border-radius:28px;
 
   margin-bottom:20px;
@@ -790,14 +753,6 @@ body{
 
   background:
 
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.93),
-      rgba(255,250,251,.86)
-    );
-
-  border:
-    1px solid
     rgba(255,255,255,.9);
 
   box-shadow:
@@ -806,6 +761,7 @@ body{
     rgba(210,110,145,.11);
 
 }
+
 
 .section-header{
 
@@ -819,6 +775,7 @@ body{
 
 }
 
+
 .section-title{
 
   color:#8c3f57;
@@ -831,13 +788,12 @@ body{
 
 }
 
+
 .section-line{
 
   flex:1;
 
   height:2px;
-
-  margin-top:7px;
 
   background:
 
@@ -849,9 +805,8 @@ body{
 
 }
 
-.section-en{
 
-  margin-left:12px;
+.section-en{
 
   color:#d28a9e;
 
@@ -861,9 +816,8 @@ body{
 
   font-size:20px;
 
-  white-space:nowrap;
-
 }
+
 
 .rule-row{
 
@@ -888,11 +842,13 @@ body{
 
 }
 
+
 .rule-row:last-child{
 
   border-bottom:none;
 
 }
+
 
 .rule-number{
 
@@ -918,11 +874,10 @@ body{
 
   color:white;
 
-  font-size:17px;
-
   font-weight:800;
 
 }
+
 
 .rule-name{
 
@@ -930,11 +885,10 @@ body{
 
   color:#724653;
 
-  font-size:17px;
-
   font-weight:800;
 
 }
+
 
 .rule-content{
 
@@ -942,24 +896,16 @@ body{
 
   color:#675862;
 
-  font-size:16px;
-
   line-height:1.8;
 
 }
+
 
 .highlight{
 
   color:#c53f61;
 
   font-weight:800;
-
-  text-decoration:
-    underline
-    2px
-    #e89bad;
-
-  text-underline-offset:5px;
 
 }
 
@@ -970,10 +916,6 @@ body{
 
 .footer{
 
-  position:relative;
-
-  z-index:2;
-
   padding:
     18px
     0
@@ -982,6 +924,7 @@ body{
   text-align:center;
 
 }
+
 
 .footer-title{
 
@@ -993,6 +936,7 @@ body{
 
 }
 
+
 .footer-tags{
 
   margin-top:8px;
@@ -1001,9 +945,8 @@ body{
 
   font-size:17px;
 
-  letter-spacing:2px;
-
 }
+
 
 .footer-brand{
 
@@ -1011,55 +954,25 @@ body{
 
   color:#b86d81;
 
-  font-size:17px;
-
 }
+
 
 .footer-text{
 
   margin-top:8px;
 
-  color:#6f6067;
-
-  font-size:16px;
-
 }
+
 
 .footer-copy{
 
   margin-top:10px;
 
-  color:#765e66;
-
-  font-size:16px;
-
-}
-
-.footer-script{
-
-  position:absolute;
-
-  right:20px;
-
-  top:0;
-
-  color:#c9879a;
-
-  font-family:
-    "Dancing Script",
-    cursive;
-
-  font-size:27px;
-
-  line-height:1.3;
-
-  transform:rotate(-8deg);
-
 }
 
 
 /* =========================================
-   載入畫面
+   Loading
 ========================================= */
 
 .loading{
@@ -1078,7 +991,7 @@ body{
 
 
 /* =========================================
-   錯誤畫面
+   Error
 ========================================= */
 
 .error-box{
@@ -1093,22 +1006,17 @@ body{
 
   text-align:center;
 
-  background:
-
-    rgba(255,255,255,.8);
-
-  box-shadow:
-
-    0 20px 50px
-    rgba(200,100,130,.12);
+  background:white;
 
 }
+
 
 .error-icon{
 
   font-size:60px;
 
 }
+
 
 .error-title{
 
@@ -1121,6 +1029,7 @@ body{
   font-weight:900;
 
 }
+
 
 .error-text{
 
@@ -1146,13 +1055,13 @@ body{
 
   }
 
+
   .header{
 
     height:105px;
 
-    border-radius:22px;
-
   }
+
 
   .brand-box{
 
@@ -1160,9 +1069,8 @@ body{
 
     height:58px;
 
-    border-radius:15px;
-
   }
+
 
   .brand{
 
@@ -1170,9 +1078,8 @@ body{
 
     letter-spacing:9px;
 
-    padding-left:9px;
-
   }
+
 
   .brand-sub{
 
@@ -1184,11 +1091,13 @@ body{
 
   }
 
+
   .header-flower{
 
     font-size:28px;
 
   }
+
 
   .header-flower.left{
 
@@ -1196,17 +1105,20 @@ body{
 
   }
 
+
   .header-flower.right{
 
     right:25px;
 
   }
 
+
   .header-script{
 
     display:none;
 
   }
+
 
   .coupon-card{
 
@@ -1215,9 +1127,8 @@ body{
       18px
       20px;
 
-    border-radius:25px;
-
   }
+
 
   .coupon-inner{
 
@@ -1225,25 +1136,13 @@ body{
 
   }
 
+
   .coupon-divider{
 
     display:none;
 
   }
 
-  .coupon-left{
-
-    padding:0;
-
-  }
-
-  .discount-title{
-
-    margin-top:25px;
-
-    font-size:20px;
-
-  }
 
   .discount{
 
@@ -1251,21 +1150,6 @@ body{
 
   }
 
-  .heart-doodle{
-
-    right:20px;
-
-    top:80px;
-
-    font-size:55px;
-
-  }
-
-  .left-travel-text{
-
-    display:none;
-
-  }
 
   .info-row{
 
@@ -1278,11 +1162,13 @@ body{
 
   }
 
+
   .info-label{
 
     font-size:14px;
 
   }
+
 
   .info-value{
 
@@ -1292,17 +1178,13 @@ body{
 
   }
 
-  .travel-message{
-
-    font-size:16px;
-
-  }
 
   .coupon-right{
 
-    padding:20px 0 0;
+    padding-top:20px;
 
   }
+
 
   .qr-box{
 
@@ -1312,6 +1194,7 @@ body{
 
   }
 
+
   .qr-box img{
 
     width:185px;
@@ -1320,6 +1203,7 @@ body{
 
   }
 
+
   .section-card{
 
     padding:
@@ -1327,9 +1211,8 @@ body{
       15px
       10px;
 
-    border-radius:22px;
-
   }
+
 
   .section-title{
 
@@ -1337,11 +1220,13 @@ body{
 
   }
 
+
   .section-en{
 
-    font-size:15px;
+    display:none;
 
   }
+
 
   .rule-row{
 
@@ -1354,15 +1239,6 @@ body{
 
   }
 
-  .rule-number{
-
-    width:28px;
-
-    height:28px;
-
-    font-size:14px;
-
-  }
 
   .rule-name{
 
@@ -1370,47 +1246,17 @@ body{
 
   }
 
+
   .rule-content{
 
     font-size:13px;
 
-    line-height:1.7;
-
   }
+
 
   .footer-title{
 
     font-size:21px;
-
-  }
-
-  .footer-tags{
-
-    font-size:13px;
-
-  }
-
-  .footer-brand{
-
-    font-size:13px;
-
-  }
-
-  .footer-text{
-
-    font-size:13px;
-
-  }
-
-  .footer-copy{
-
-    font-size:12px;
-
-  }
-
-  .footer-script{
-
-    display:none;
 
   }
 
@@ -1424,71 +1270,84 @@ body{
 <body>
 
 
-<div class="bg-flower flower-1">🌸</div>
-<div class="bg-flower flower-2">🌸</div>
-<div class="bg-flower flower-3">🌸</div>
-<div class="bg-flower flower-4">🌸</div>
+<!-- 背景花朵 -->
+
+<div class="bg-flower flower-1">
+🌸
+</div>
+
+<div class="bg-flower flower-2">
+🌸
+</div>
+
+<div class="bg-flower flower-3">
+🌸
+</div>
+
+<div class="bg-flower flower-4">
+🌸
+</div>
 
 
 <div class="page">
 
 
-  <!-- HEADER -->
+<!-- HEADER -->
 
-  <div class="header">
+<div class="header">
 
-    <div class="header-flower left">
-      🌸
-    </div>
-
-
-    <div class="brand-box">
-
-      <div class="brand">
-        囍莉旅遊
-      </div>
-
-    </div>
+  <div class="header-flower left">
+    🌸
+  </div>
 
 
-    <div class="brand-sub">
+  <div class="brand-box">
 
-      ✈
-      <span>
-        跟著阿冷四處玩吧！！
-      </span>
-      ✈
-
-    </div>
-
-
-    <div class="header-flower right">
-      🌸
-    </div>
-
-
-    <div class="header-script">
-
-      Travel<br>
-      Happy<br>
-      Together ♡
-
+    <div class="brand">
+      囍莉旅遊
     </div>
 
   </div>
 
 
-  <!-- 動態優惠券 -->
+  <div class="brand-sub">
 
-  <div id="app">
-
-    <div class="loading">
-
-      🌸 優惠券載入中...
-
-    </div>
+    ✈
+    <span>
+      跟著阿冷四處玩吧！！
+    </span>
+    ✈
 
   </div>
+
+
+  <div class="header-flower right">
+    🌸
+  </div>
+
+
+  <div class="header-script">
+
+    Travel<br>
+    Happy<br>
+    Together ♡
+
+  </div>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="app">
+
+  <div class="loading">
+
+    🌸 優惠券載入中...
+
+  </div>
+
+</div>
 
 
 </div>
@@ -1496,73 +1355,59 @@ body{
 
 <script>
 
+
 /* =========================================
    Google Apps Script API
 ========================================= */
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxChJA50TlN2KFvwxmyvKGS_uJlHqqEM4zUCs8KTd53AzL_TtQFusXMdUD8KCVDb8qO1A/exec";
+"https://script.google.com/macros/s/AKfycbxChJA50TlN2KFvwxmyvKGS_uJlHqqEM4zUCs8KTd53AzL_TtQFusXMdUD8KCVDb8qO1A/exec";
 
 
 /* =========================================
-   取得網址優惠券編號
+   取得網址優惠券代碼
 ========================================= */
 
 const params =
-  new URLSearchParams(
-    window.location.search
-  );
+new URLSearchParams(
+  window.location.search
+);
 
 
 const couponCode =
-  params.get("code");
+params.get("code");
 
 
 /* =========================================
-   HTML 防止特殊字元
+   HTML 安全
 ========================================= */
 
 function escapeHtml(value){
 
   return String(value ?? "")
 
-    .replace(
-      /&/g,
-      "&amp;"
-    )
+    .replace(/&/g,"&amp;")
 
-    .replace(
-      /</g,
-      "&lt;"
-    )
+    .replace(/</g,"&lt;")
 
-    .replace(
-      />/g,
-      "&gt;"
-    )
+    .replace(/>/g,"&gt;")
 
-    .replace(
-      /"/g,
-      "&quot;"
-    )
+    .replace(/"/g,"&quot;")
 
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+    .replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================================
-   載入優惠券
+   頁面載入
 ========================================= */
 
 window.addEventListener(
 
   "DOMContentLoaded",
 
-  async function(){
+  function(){
 
     if(!couponCode){
 
@@ -1575,64 +1420,85 @@ window.addEventListener(
     }
 
 
-    try{
-
-      const url =
-
-        API_URL
-
-        + "?action=getCoupon"
-
-        + "&code="
-
-        + encodeURIComponent(
-            couponCode
-          );
-
-
-      const response =
-        await fetch(
-          url
-        );
-
-
-      const data =
-        await response.json();
-
-
-      if(!data.success){
-
-        showError(
-          data.message ||
-          "找不到這張優惠券"
-        );
-
-        return;
-
-      }
-
-
-      renderCoupon(
-        data
-      );
-
-    }
-
-    catch(error){
-
-      console.error(
-        error
-      );
-
-      showError(
-        "優惠券載入失敗，請稍後再試"
-      );
-
-    }
+    loadCoupon();
 
   }
 
 );
+
+
+/* =========================================
+   讀取優惠券
+========================================= */
+
+async function loadCoupon(){
+
+  try{
+
+    const url =
+
+      API_URL
+
+      +
+
+      "?action=getCoupon"
+
+      +
+
+      "&code="
+
+      +
+
+      encodeURIComponent(
+        couponCode
+      );
+
+
+    const response =
+
+      await fetch(url);
+
+
+    const data =
+
+      await response.json();
+
+
+    if(
+      !data.success
+    ){
+
+      showError(
+        data.message ||
+        "找不到這張優惠券"
+      );
+
+      return;
+
+    }
+
+
+    renderCoupon(
+      data
+    );
+
+  }
+
+
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    showError(
+      "優惠券載入失敗，請稍後再試"
+    );
+
+  }
+
+}
 
 
 /* =========================================
@@ -1641,13 +1507,11 @@ window.addEventListener(
 
 function showError(message){
 
-  const app =
-    document.getElementById(
+  document
+    .getElementById(
       "app"
-    );
-
-
-  app.innerHTML = `
+    )
+    .innerHTML = `
 
     <div class="error-box">
 
@@ -1662,8 +1526,9 @@ function showError(message){
       <div class="error-text">
 
         ${
-          message ||
-          "此優惠券不存在或連結錯誤"
+          escapeHtml(
+            message
+          )
         }
 
       </div>
@@ -1681,210 +1546,230 @@ function showError(message){
 
 function renderCoupon(data){
 
-  const app =
-    document.getElementById(
-      "app"
-    );
-
 
   let statusClass = "";
 
   let statusText =
-    data.status;
+  data.status;
 
 
-  if(data.status === "未使用"){
+  if(
+    data.status === "未使用"
+  ){
 
     statusText =
-      "✓ 未使用";
+    "✓ 未使用";
 
   }
 
 
-  if(data.status === "已使用"){
+  if(
+    data.status === "已使用"
+  ){
 
     statusClass =
-      "used";
+    "used";
 
     statusText =
-      "✓ 已使用";
+    "✓ 已使用";
 
   }
 
 
-  app.innerHTML = `
+  /* QR Code */
+
+  const customerUrl =
+
+    window.location.origin
+
+    +
+
+    window.location.pathname
+
+    +
+
+    "?code="
+
+    +
+
+    encodeURIComponent(
+      data.code
+    );
 
 
-  <section class="coupon-card">
+  const qrUrl =
+
+    "https://quickchart.io/qr?size=300&text="
+
+    +
+
+    encodeURIComponent(
+      customerUrl
+    );
 
 
-    <div class="coupon-divider"></div>
+  document
+    .getElementById(
+      "app"
+    )
+    .innerHTML = `
 
 
-    <div class="coupon-inner">
+<!-- =====================================
+     優惠券
+===================================== -->
+
+<section class="coupon-card">
 
 
-      <!-- 左邊 -->
-
-      <div class="coupon-left">
+  <div class="coupon-divider"></div>
 
 
-        <div
-          class="
-            status
-            ${statusClass}
-          "
+  <div class="coupon-inner">
+
+
+    <!-- 左邊 -->
+
+    <div class="coupon-left">
+
+
+      <div
+        class="
+          status
+          ${statusClass}
+        "
+      >
+
+        ${escapeHtml(statusText)}
+
+      </div>
+
+
+      <div class="discount-title">
+
+        折抵 NT$
+
+      </div>
+
+
+      <div class="discount">
+
+        ${escapeHtml(data.discount)}
+
+      </div>
+
+
+      <div class="info-box">
+
+
+        <div class="info-row">
+
+          <div class="info-icon">
+            🎟️
+          </div>
+
+          <div class="info-label">
+            優惠券號碼
+          </div>
+
+          <div class="info-value">
+
+            ${escapeHtml(data.code)}
+
+          </div>
+
+        </div>
+
+
+        <div class="info-row">
+
+          <div class="info-icon">
+            🗓️
+          </div>
+
+          <div class="info-label">
+            有效期限
+          </div>
+
+          <div class="info-value">
+
+            ${escapeHtml(data.validUntil)}
+
+          </div>
+
+        </div>
+
+
+        <div class="info-row">
+
+          <div class="info-icon">
+            📝
+          </div>
+
+          <div class="info-label">
+            備註
+          </div>
+
+          <div class="info-value">
+
+            ${escapeHtml(
+              data.note || "無"
+            )}
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="travel-message">
+
+        期待與您一同出發<br>
+
+        創造美好的旅行回憶！ 💗
+
+      </div>
+
+
+    </div>
+
+
+    <!-- 右邊 -->
+
+    <div class="coupon-right">
+
+
+      <div class="qr-title">
+
+        請出示此 QR Code<br>
+
+        給工作人員掃描核銷
+
+      </div>
+
+
+      <div class="qr-box">
+
+        <img
+          src="${qrUrl}"
+          alt="優惠券 QR Code"
         >
 
-          ${escapeHtml(statusText)}
-
-        </div>
+      </div>
 
 
-        <div class="left-travel-text">
+      <div class="travel-button">
 
-          一起出發<br>
-          看更大的世界<br>
-          ♡
-
-        </div>
-
-
-        <div class="discount-title">
-
-          折抵 NT$
-
-        </div>
-
-
-        <div class="discount">
-
-          ${escapeHtml(data.discount)}
-
-        </div>
-
-
-        <div class="heart-doodle">
-
-          ♡
-
-        </div>
-
-
-        <div class="info-box">
-
-
-          <div class="info-row">
-
-            <div class="info-icon">
-              🎟️
-            </div>
-
-            <div class="info-label">
-              優惠券號碼
-            </div>
-
-            <div class="info-value">
-
-              ${escapeHtml(data.code)}
-
-            </div>
-
-          </div>
-
-
-          <div class="info-row">
-
-            <div class="info-icon">
-              🗓️
-            </div>
-
-            <div class="info-label">
-              有效期限
-            </div>
-
-            <div class="info-value">
-
-              ${escapeHtml(data.validUntil)}
-
-            </div>
-
-          </div>
-
-
-          <div class="info-row">
-
-            <div class="info-icon">
-              📝
-            </div>
-
-            <div class="info-label">
-              備註
-            </div>
-
-            <div class="info-value">
-
-              ${escapeHtml(data.note || "無")}
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-
-        <div class="travel-message">
-
-          期待與您一同出發<br>
-
-          創造美好的旅行回憶！ 💗
-
-        </div>
-
+        囍莉旅遊
 
       </div>
 
 
-      <!-- 右邊 -->
+      <div class="travel-en">
 
-      <div class="coupon-right">
-
-
-        <div class="qr-title">
-
-          請出示此 QR Code<br>
-
-          給工作人員掃描核銷
-
-        </div>
-
-
-        <div class="qr-box">
-
-          <div style="font-size:16px;text-align:center;padding:20px;color:#916371">
-
-            請由工作人員使用<br>
-            優惠券代碼進行核銷
-
-          </div>
-
-        </div>
-
-
-        <div class="travel-button">
-
-          囍莉旅遊
-
-        </div>
-
-
-        <div class="travel-en">
-
-          TRAVEL ✈ HAPPY ✈ TOGETHER
-
-        </div>
-
+        TRAVEL ✈ HAPPY ✈ TOGETHER
 
       </div>
 
@@ -1892,396 +1777,328 @@ function renderCoupon(data){
     </div>
 
 
-  </section>
+  </div>
 
 
-  <!-- 使用說明 -->
-
-  <section class="section-card">
+</section>
 
 
-    <div class="section-header">
 
-      <div class="section-title">
+<!-- =====================================
+     使用說明
+===================================== -->
 
-        📣 使用說明
+<section class="section-card">
 
-      </div>
 
-      <div class="section-line"></div>
+  <div class="section-header">
 
-      <div class="section-en">
+    <div class="section-title">
 
-        Enjoy Your Journey ♥
-
-      </div>
+      📣 使用說明
 
     </div>
 
 
-    <div class="rule-row">
+    <div class="section-line"></div>
 
-      <div class="rule-number">1</div>
 
-      <div class="rule-name">
-        適用行程
-      </div>
+    <div class="section-en">
 
-      <div class="rule-content">
-
-        本折價券限於
-
-        <span class="highlight">
-          囍莉旅遊指定旅遊行程報名時使用
-        </span>
-
-        ，實際適用團別及折抵金額依券面或活動公告為準。
-
-      </div>
+      Enjoy Your Journey ♥
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">2</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        使用方式
-      </div>
+    <div class="rule-number">
+      1
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      適用行程
+    </div>
 
-        請於
+    <div class="rule-content">
 
-        <span class="highlight">
-          報名前主動出示本電子折價券
-        </span>
+      本折價券限於
 
-        ，並由囍莉旅遊工作人員確認後進行核銷。
+      <span class="highlight">
+        囍莉旅遊指定旅遊行程報名時使用
+      </span>
 
-      </div>
+      ，實際適用團別及折抵金額依券面或活動公告為準。
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">3</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        使用次數
-      </div>
+    <div class="rule-number">
+      2
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      使用方式
+    </div>
 
-        每張優惠券
+    <div class="rule-content">
 
-        <span class="highlight">
-          僅限使用一次
-        </span>
+      請於
 
-        ，核銷成功後即自動失效。
+      <span class="highlight">
+        報名前主動出示本電子折價券
+      </span>
 
-      </div>
+      ，並由囍莉旅遊工作人員確認後進行核銷。
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">4</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        使用限制
-      </div>
+    <div class="rule-number">
+      3
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      使用次數
+    </div>
 
-        <span class="highlight">
-          每一團每位旅客 限使用 1 張折價券
-        </span>
+    <div class="rule-content">
 
-        。
+      每張優惠券
 
-      </div>
+      <span class="highlight">
+        僅限使用一次
+      </span>
+
+      ，核銷成功後即自動失效。
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">5</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        使用期限
-      </div>
+    <div class="rule-number">
+      4
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      使用限制
+    </div>
 
-        本折價券有效期限至
+    <div class="rule-content">
 
-        <span class="highlight">
-          券面顯示日期止
-        </span>
+      <span class="highlight">
+        每一團每位旅客限使用 1 張折價券
+      </span>
 
-        ，逾期自動失效。
-
-      </div>
+      。
 
     </div>
 
-
-  </section>
-
-
-  <!-- 注意事項 -->
-
-  <section class="section-card">
+  </div>
 
 
-    <div class="section-header">
+  <div class="rule-row">
 
-      <div class="section-title">
+    <div class="rule-number">
+      5
+    </div>
 
-        ⚠️ 注意事項
+    <div class="rule-name">
+      使用期限
+    </div>
 
-      </div>
+    <div class="rule-content">
 
-      <div class="section-line"></div>
+      本折價券有效期限至
 
-      <div class="section-en">
+      <span class="highlight">
+        券面顯示日期止
+      </span>
 
-        Travel with Love ♥
-
-      </div>
+      ，逾期自動失效。
 
     </div>
 
-
-    <div class="rule-row">
-
-      <div class="rule-number">1</div>
-
-      <div class="rule-name">
-        不得兌換現金
-      </div>
-
-      <div class="rule-content">
-
-        本折價券為活動贈送之旅遊折價券，
-
-        <span class="highlight">
-          不得兌換現金、找零或兌換其他等值商品
-        </span>
-
-        。
-
-      </div>
-
-    </div>
+  </div>
 
 
-    <div class="rule-row">
+</section>
 
-      <div class="rule-number">2</div>
 
-      <div class="rule-name">
-        不得與其他優惠併用
-      </div>
 
-      <div class="rule-content">
+<!-- =====================================
+     注意事項
+===================================== -->
 
-        本折價券
+<section class="section-card">
 
-        <span class="highlight">
-          不得與其他折扣、優惠或活動同時使用
-        </span>
 
-        。
+  <div class="section-header">
 
-      </div>
+    <div class="section-title">
+
+      ⚠️ 注意事項
 
     </div>
 
+    <div class="section-line"></div>
 
-    <div class="rule-row">
+    <div class="section-en">
 
-      <div class="rule-number">3</div>
-
-      <div class="rule-name">
-        報名後無法補用
-      </div>
-
-      <div class="rule-content">
-
-        使用折價券時，須於
-
-        <span class="highlight">
-          報名前主動提出
-        </span>
-
-        ；
-
-        <span class="highlight">
-          完成報名後恕無法事後補用
-        </span>
-
-        。
-
-      </div>
+      Travel with Love ♥
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">4</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        取消、退費或改團
-      </div>
+    <div class="rule-number">
+      1
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      不得兌換現金
+    </div>
 
-        如因旅客個人因素取消、退費或改團，
+    <div class="rule-content">
 
-        <span class="highlight">
-          本折價券恕不退還，亦不得再次使用
-        </span>
-
-        。
-
-        <br><br>
-
-        如因囍莉旅遊取消行程，或因天候、天然災害等不可抗力因素致行程取消，
-
-        <span class="highlight">
-          本折價券將退回並保留原使用資格
-        </span>
-
-        。
-
-      </div>
+      本折價券不得兌換現金、找零或兌換其他商品。
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">5</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        不得轉售
-      </div>
+    <div class="rule-number">
+      2
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      不得併用
+    </div>
 
-        本折價券
+    <div class="rule-content">
 
-        <span class="highlight">
-          不得轉售或作為其他商業用途
-        </span>
-
-        。
-
-      </div>
+      本折價券不得與其他折扣、優惠或活動同時使用。
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">6</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        妥善保管
-      </div>
+    <div class="rule-number">
+      3
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      報名後無法補用
+    </div>
 
-        請妥善保管本電子折價券及 QR Code，
+    <div class="rule-content">
 
-        <span class="highlight">
-          避免提供給他人使用
-        </span>
-
-        。
-
-      </div>
+      使用折價券時須於報名前主動提出，
+      完成報名後恕無法補用。
 
     </div>
 
+  </div>
 
-    <div class="rule-row">
 
-      <div class="rule-number">7</div>
+  <div class="rule-row">
 
-      <div class="rule-name">
-        其他事項
-      </div>
+    <div class="rule-number">
+      4
+    </div>
 
-      <div class="rule-content">
+    <div class="rule-name">
+      不得轉售
+    </div>
 
-        本折價券其他未列明事項，
-        依相關法令及雙方約定辦理。
+    <div class="rule-content">
 
-      </div>
+      本折價券不得轉售或作為其他商業用途。
 
     </div>
 
-
-  </section>
-
-
-  <!-- Footer -->
-
-  <footer class="footer">
+  </div>
 
 
-    <div class="footer-title">
-
-      一起把平凡的日子，變成值得收藏的回憶 ✨
-
-    </div>
+</section>
 
 
-    <div class="footer-tags">
 
-      台南出發 ｜ 遊覽車旅行 ｜ 輕鬆慢遊 ｜ 溫暖同行
+<!-- =====================================
+     Footer
+===================================== -->
 
-    </div>
-
-
-    <div class="footer-brand">
-
-      🌸 囍莉旅遊 ｜ 台南出發小旅行 🌸
-
-    </div>
+<footer class="footer">
 
 
-    <div class="footer-text">
+  <div class="footer-title">
 
-      旅行最美的，不只是風景，而是一起出發的人。
+    一起把平凡的日子，變成值得收藏的回憶 ✨
 
-    </div>
-
-
-    <div class="footer-copy">
-
-      © 2026 囍莉旅遊 All Rights Reserved.
-
-    </div>
+  </div>
 
 
-  </footer>
+  <div class="footer-tags">
+
+    台南出發 ｜ 遊覽車旅行 ｜ 輕鬆慢遊 ｜ 溫暖同行
+
+  </div>
 
 
-  `;
+  <div class="footer-brand">
+
+    🌸 囍莉旅遊 ｜ 台南出發小旅行 🌸
+
+  </div>
+
+
+  <div class="footer-text">
+
+    旅行最美的，不只是風景，而是一起出發的人。
+
+  </div>
+
+
+  <div class="footer-copy">
+
+    © 2026 囍莉旅遊 All Rights Reserved.
+
+  </div>
+
+
+</footer>
+
+
+`;
 
 }
 
+
 </script>
 
+
 </body>
+
 </html>
