@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <!-- Google Fonts -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+
+<style>
+
+/* =========================================
+   全域
+========================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+
+html{
+  scroll-behavior:smooth;
+}
+
+
+body{
+
+  margin:0;
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
+  color:#5f4b55;
+
+  overflow-x:hidden;
+
+
+  /* 粉紅天空背景 */
+
+  background:
+
+    radial-gradient(
+      circle at 12% 5%,
+      rgba(255,170,195,.65),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      circle at 85% 8%,
+      rgba(255,210,220,.8),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,255,255,.75),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at 20% 70%,
+      rgba(255,190,210,.45),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      180deg,
+      #f9d9df 0%,
+      #fce4e8 25%,
+      #fff5f4 55%,
+      #f8dfe5 100%
+    );
+
+}
+
+
+/* =========================================
+   背景裝飾
+========================================= */
+
+.bg-flower{
+
+  position:fixed;
+
+  z-index:0;
+
+  font-size:55px;
+
+  opacity:.16;
+
+  pointer-events:none;
+
+}
+
+
+.flower-1{
+
+  left:2%;
+
+  top:18%;
+
+  transform:rotate(-25deg);
+
+}
+
+
+.flower-2{
+
+  right:4%;
+
+  top:12%;
+
+  transform:rotate(30deg);
+
+}
+
+
+.flower-3{
+
+  left:3%;
+
+  bottom:18%;
+
+  transform:rotate(-15deg);
+
+}
+
+
+.flower-4{
+
+  right:5%;
+
+  bottom:24%;
+
+  transform:rotate(20deg);
+
+}
+
+
+/* =========================================
+   主容器
+========================================= */
+
+.page{
+
+  position:relative;
+
+  z-index:2;
+
+  width:100%;
+
+  max-width:1024px;
+
+  margin:0 auto;
+
+  padding:
+    14px
+    60px
+    0;
+
+}
+
+
+/* =========================================
+   Header
+========================================= */
+
+.header{
+
+  position:relative;
+
+  height:135px;
+
+  margin-bottom:18px;
+
+  border-radius:28px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.9),
+      rgba(255,240,243,.8)
+    );
+
+  border:
+
+    1px solid
+    rgba(255,255,255,.9);
+
+  box-shadow:
+
+    0 18px 45px
+    rgba(220,110,145,.12);
+
+}
+
+
+.header-flower{
+
+  position:absolute;
+
+  font-size:55px;
+
+}
+
+
+.header-flower.left{
+
+  left:130px;
+
+}
+
+
+.header-flower.right{
+
+  right:130px;
+
+}
+
+
+.brand-box{
+
+  position:relative;
+
+  width:375px;
+
+  height:82px;
+
+  border-radius:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #d77894,
+      #bc536f
+    );
+
+  box-shadow:
+
+    0 12px 22px
+    rgba(180,70,110,.25);
+
+}
+
+
+.brand{
+
+  color:white;
+
+  font-size:42px;
+
+  font-weight:900;
+
+  letter-spacing:16px;
+
+  padding-left:16px;
+
+}
+
+
+/* 副標題 */
+
+.brand-sub{
+
+  position:absolute;
+
+  top:110px;
+
+  width:100%;
+
+  text-align:center;
+
+  color:#8e5d6b;
+
+  font-size:17px;
+
+  letter-spacing:6px;
+
+  font-weight:600;
+
+}
+
+
+.brand-sub span{
+
+  margin:0 10px;
+
+}
+
+
+.header-script{
+
+  position:absolute;
+
+  right:25px;
+
+  top:25px;
+
+  color:#c98a9d;
+
+  font-family:
+    "Dancing Script",
+    cursive;
+
+  font-size:25px;
+
+  line-height:1.25;
+
+  transform:rotate(-8deg);
+
+  text-align:center;
+
+}
+
+
+/* =========================================
+   優惠券
+========================================= */
+
+.coupon-card{
+
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:440px;
+
+  border-radius:30px;
+
+  margin-bottom:20px;
+
+  padding:34px 30px 25px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.93),
+      rgba(255,249,250,.88)
+    );
+
+  border:
+
+    1px solid
+    rgba(255,255,255,.9);
+
+  box-shadow:
+
+    0 20px 45px
+    rgba(213,110,145,.15);
+
+}
+
+
+.coupon-inner{
+
+  display:grid;
+
+  grid-template-columns:
+    1.15fr
+    .85fr;
+
+  gap:25px;
+
+  min-height:360px;
+
+}
+
+
+/* =========================================
+   左邊
+========================================= */
+
+.coupon-left{
+
+  position:relative;
+
+  padding:
+    0
+    20px
+    0
+    0;
+
+}
+
+
+.status{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:
+    11px
+    24px;
+
+  border-radius:40px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #eef7ec,
+      #dcebdd
+    );
+
+  color:#4d805a;
+
+  font-size:22px;
+
+  font-weight:800;
+
+}
+
+
+.status.used{
+
+  background:#f3d9df;
+
+  color:#a64961;
+
+}
+
+
+.status.expired{
+
+  background:#eee6e6;
+
+  color:#8b7777;
+
+}
+
+
+.discount-title{
+
+  margin-top:38px;
+
+  text-align:center;
+
+  color:#8d5365;
+
+  font-size:25px;
+
+  font-weight:700;
+
+  letter-spacing:3px;
+
+}
+
+
+.discount{
+
+  position:relative;
+
+  text-align:center;
+
+  margin-top:-2px;
+
+  color:#b23f60;
+
+  font-size:125px;
+
+  line-height:1;
+
+  font-weight:900;
+
+  letter-spacing:2px;
+
+  text-shadow:
+
+    0 10px 15px
+    rgba(180,70,110,.12);
+
+}
+
+
+.heart-doodle{
+
+  position:absolute;
+
+  right:8px;
+
+  top:105px;
+
+  font-size:80px;
+
+  color:#efb3c3;
+
+  font-family:cursive;
+
+  font-weight:300;
+
+}
+
+
+.left-travel-text{
+
+  position:absolute;
+
+  left:-3px;
+
+  top:135px;
+
+  color:#db8ea3;
+
+  font-size:16px;
+
+  line-height:1.6;
+
+  transform:rotate(-8deg);
+
+  text-align:center;
+
+}
+
+
+.info-box{
+
+  margin-top:15px;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    #efc5cf;
+
+  background:
+    rgba(255,255,255,.5);
+
+}
+
+
+.info-row{
+
+  display:grid;
+
+  grid-template-columns:
+    42px
+    135px
+    1fr;
+
+  align-items:center;
+
+  min-height:50px;
+
+  padding:
+    0
+    18px;
+
+  border-bottom:
+    1px solid
+    #efd5da;
+
+}
+
+
+.info-row:last-child{
+
+  border-bottom:none;
+
+}
+
+
+.info-icon{
+
+  font-size:22px;
+
+}
+
+
+.info-label{
+
+  font-size:17px;
+
+  font-weight:600;
+
+  color:#715661;
+
+}
+
+
+.info-value{
+
+  font-size:18px;
+
+  font-weight:700;
+
+  color:#865363;
+
+}
+
+
+.travel-message{
+
+  margin-top:18px;
+
+  text-align:center;
+
+  color:#cf758d;
+
+  font-size:20px;
+
+  line-height:1.55;
+
+  font-weight:600;
+
+}
+
+
+/* =========================================
+   中間虛線
+========================================= */
+
+.coupon-divider{
+
+  position:absolute;
+
+  left:58%;
+
+  top:35px;
+
+  bottom:25px;
+
+  border-left:
+    2px dashed
+    rgba(230,155,175,.5);
+
+}
+
+
+/* =========================================
+   右邊
+========================================= */
+
+.coupon-right{
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding-left:20px;
+
+}
+
+
+.qr-title{
+
+  width:100%;
+
+  max-width:255px;
+
+  padding:
+    15px
+    18px;
+
+  margin-bottom:12px;
+
+  border-radius:22px;
+
+  text-align:center;
+
+  color:#7f5360;
+
+  font-size:20px;
+
+  font-weight:700;
+
+  line-height:1.55;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #f8e6ea,
+      #f2dfe4
+    );
+
+}
+
+
+.qr-box{
+
+  width:255px;
+
+  height:255px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:20px;
+
+  background:white;
+
+  border:
+    3px solid
+    #eab6c4;
+
+  box-shadow:
+
+    0 10px 25px
+    rgba(210,100,135,.12);
+
+}
+
+
+.qr-box img{
+
+  width:215px;
+
+  height:215px;
+
+  object-fit:contain;
+
+}
+
+
+.travel-button{
+
+  margin-top:14px;
+
+  padding:
+    10px
+    36px;
+
+  border-radius:50px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #d97893,
+      #bd5874
+    );
+
+  color:white;
+
+  font-size:19px;
+
+  font-weight:800;
+
+  box-shadow:
+
+    0 8px 18px
+    rgba(190,80,115,.18);
+
+}
+
+
+.travel-en{
+
+  margin-top:10px;
+
+  color:#916371;
+
+  font-size:15px;
+
+  letter-spacing:1px;
+
+}
+
+
+/* =========================================
+   Section 共用
+========================================= */
+
+.section-card{
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  margin-bottom:20px;
+
+  padding:
+    20px
+    30px
+    14px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.93),
+      rgba(255,250,251,.86)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.9);
+
+  box-shadow:
+
+    0 15px 38px
+    rgba(210,110,145,.11);
+
+}
+
+
+.section-header{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:10px;
+
+}
+
+
+.section-title{
+
+  color:#8c3f57;
+
+  font-size:32px;
+
+  font-weight:900;
+
+  white-space:nowrap;
+
+}
+
+
+.section-line{
+
+  flex:1;
+
+  height:2px;
+
+  margin-top:7px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      #d98ca1,
+      rgba(217,140,161,.25)
+    );
+
+}
+
+
+.section-en{
+
+  margin-left:12px;
+
+  color:#d28a9e;
+
+  font-family:
+    "Dancing Script",
+    cursive;
+
+  font-size:20px;
+
+  white-space:nowrap;
+
+}
+
+
+/* =========================================
+   說明列表
+========================================= */
+
+.rule-row{
+
+  display:grid;
+
+  grid-template-columns:
+    42px
+    135px
+    1fr;
+
+  gap:10px;
+
+  align-items:start;
+
+  padding:
+    11px
+    0;
+
+  border-bottom:
+    1px solid
+    #ecd7dc;
+
+}
+
+
+.rule-row:last-child{
+
+  border-bottom:none;
+
+}
+
+
+.rule-number{
+
+  width:34px;
+
+  height:34px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #e69ab0,
+      #c96883
+    );
+
+  color:white;
+
+  font-size:17px;
+
+  font-weight:800;
+
+}
+
+
+.rule-name{
+
+  padding-top:4px;
+
+  color:#724653;
+
+  font-size:17px;
+
+  font-weight:800;
+
+}
+
+
+.rule-content{
+
+  padding-top:4px;
+
+  color:#675862;
+
+  font-size:16px;
+
+  line-height:1.8;
+
+}
+
+
+.highlight{
+
+  color:#c53f61;
+
+  font-weight:800;
+
+  text-decoration:
+    underline
+    2px
+    #e89bad;
+
+  text-underline-offset:5px;
+
+}
+
+
+/* =========================================
+   Footer
+========================================= */
+
+.footer{
+
+  position:relative;
+
+  z-index:2;
+
+  padding:
+    18px
+    0
+    38px;
+
+  text-align:center;
+
+}
+
+
+.footer-title{
+
+  color:#9a455e;
+
+  font-size:28px;
+
+  font-weight:900;
+
+}
+
+
+.footer-tags{
+
+  margin-top:8px;
+
+  color:#765964;
+
+  font-size:17px;
+
+  letter-spacing:2px;
+
+}
+
+
+.footer-brand{
+
+  margin-top:15px;
+
+  color:#b86d81;
+
+  font-size:17px;
+
+}
+
+
+.footer-text{
+
+  margin-top:8px;
+
+  color:#6f6067;
+
+  font-size:16px;
+
+}
+
+
+.footer-copy{
+
+  margin-top:10px;
+
+  color:#765e66;
+
+  font-size:16px;
+
+}
+
+
+.footer-script{
+
+  position:absolute;
+
+  right:20px;
+
+  top:0;
+
+  color:#c9879a;
+
+  font-family:
+    "Dancing Script",
+    cursive;
+
+  font-size:27px;
+
+  line-height:1.3;
+
+  transform:rotate(-8deg);
+
+}
+
+
+/* =========================================
+   底部山脈背景
+========================================= */
+
+.mountains{
+
+  position:absolute;
+
+  left:0;
+
+  bottom:0;
+
+  width:100%;
+
+  height:230px;
+
+  z-index:0;
+
+  pointer-events:none;
+
+  overflow:hidden;
+
+}
+
+
+.mountain-back{
+
+  position:absolute;
+
+  left:-5%;
+
+  bottom:-40px;
+
+  width:110%;
+
+  height:170px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(239,166,183,.55),
+      rgba(246,188,201,.7)
+    );
+
+  clip-path:
+
+    polygon(
+      0 100%,
+      0 65%,
+      8% 45%,
+      17% 70%,
+      27% 30%,
+      38% 70%,
+      48% 40%,
+      58% 72%,
+      68% 25%,
+      80% 65%,
+      90% 35%,
+      100% 60%,
+      100% 100%
+    );
+
+}
+
+
+.mountain-front{
+
+  position:absolute;
+
+  left:-5%;
+
+  bottom:-50px;
+
+  width:110%;
+
+  height:150px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(238,151,174,.55),
+      rgba(246,177,193,.75)
+    );
+
+  clip-path:
+
+    polygon(
+      0 100%,
+      0 75%,
+      10% 45%,
+      20% 70%,
+      31% 35%,
+      42% 70%,
+      52% 45%,
+      63% 78%,
+      75% 35%,
+      87% 65%,
+      100% 45%,
+      100% 100%
+    );
+
+}
+
+
+/* =========================================
+   載入畫面
+========================================= */
+
+.loading{
+
+  padding:100px 20px;
+
+  text-align:center;
+
+  color:#b75d78;
+
+  font-size:22px;
+
+  font-weight:700;
+
+}
+
+
+/* =========================================
+   找不到優惠券
+========================================= */
+
+.error-box{
+
+  margin:80px auto;
+
+  max-width:600px;
+
+  padding:50px 30px;
+
+  border-radius:30px;
+
+  text-align:center;
+
+  background:
+
+    rgba(255,255,255,.8);
+
+  box-shadow:
+
+    0 20px 50px
+    rgba(200,100,130,.12);
+
+}
+
+
+.error-icon{
+
+  font-size:60px;
+
+}
+
+
+.error-title{
+
+  margin-top:15px;
+
+  font-size:30px;
+
+  color:#b34d68;
+
+  font-weight:900;
+
+}
+
+
+.error-text{
+
+  margin-top:10px;
+
+  color:#7c6570;
+
+}
+
+
+/* =========================================
+   手機版
+========================================= */
+
+@media(max-width:760px){
+
+  .page{
+
+    padding:
+      12px
+      14px
+      0;
+
+  }
+
+
+  .header{
+
+    height:105px;
+
+    border-radius:22px;
+
+  }
+
+
+  .brand-box{
+
+    width:230px;
+
+    height:58px;
+
+    border-radius:15px;
+
+  }
+
+
+  .brand{
+
+    font-size:28px;
+
+    letter-spacing:9px;
+
+    padding-left:9px;
+
+  }
+
+
+  .brand-sub{
+
+    top:72px;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+  }
+
+
+  .header-flower{
+
+    font-size:28px;
+
+  }
+
+
+  .header-flower.left{
+
+    left:25px;
+
+  }
+
+
+  .header-flower.right{
+
+    right:25px;
+
+  }
+
+
+  .header-script{
+
+    display:none;
+
+  }
+
+
+  .coupon-card{
+
+    padding:
+      22px
+      18px
+      20px;
+
+    border-radius:25px;
+
+  }
+
+
+  .coupon-inner{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .coupon-divider{
+
+    display:none;
+
+  }
+
+
+  .coupon-left{
+
+    padding:0;
+
+  }
+
+
+  .discount-title{
+
+    margin-top:25px;
+
+    font-size:20px;
+
+  }
+
+
+  .discount{
+
+    font-size:90px;
+
+  }
+
+
+  .heart-doodle{
+
+    right:20px;
+
+    top:80px;
+
+    font-size:55px;
+
+  }
+
+
+  .left-travel-text{
+
+    display:none;
+
+  }
+
+
+  .info-row{
+
+    grid-template-columns:
+      32px
+      95px
+      1fr;
+
+    padding:0 12px;
+
+  }
+
+
+  .info-label{
+
+    font-size:14px;
+
+  }
+
+
+  .info-value{
+
+    font-size:14px;
+
+    word-break:break-all;
+
+  }
+
+
+  .travel-message{
+
+    font-size:16px;
+
+  }
+
+
+  .coupon-right{
+
+    padding:20px 0 0;
+
+  }
+
+
+  .qr-box{
+
+    width:220px;
+
+    height:220px;
+
+  }
+
+
+  .qr-box img{
+
+    width:185px;
+
+    height:185px;
+
+  }
+
+
+  .section-card{
+
+    padding:
+      18px
+      15px
+      10px;
+
+    border-radius:22px;
+
+  }
+
+
+  .section-title{
+
+    font-size:25px;
+
+  }
+
+
+  .section-en{
+
+    font-size:15px;
+
+  }
+
+
+  .rule-row{
+
+    grid-template-columns:
+      34px
+      90px
+      1fr;
+
+    gap:6px;
+
+  }
+
+
+  .rule-number{
+
+    width:28px;
+
+    height:28px;
+
+    font-size:14px;
+
+  }
+
+
+  .rule-name{
+
+    font-size:14px;
+
+  }
+
+
+  .rule-content{
+
+    font-size:13px;
+
+    line-height:1.7;
+
+  }
+
+
+  .footer-title{
+
+    font-size:21px;
+
+  }
+
+
+  .footer-tags{
+
+    font-size:13px;
+
+  }
+
+
+  .footer-brand{
+
+    font-size:13px;
+
+  }
+
+
+  .footer-text{
+
+    font-size:13px;
+
+  }
+
+
+  .footer-copy{
+
+    font-size:12px;
+
+  }
+
+
+  .footer-script{
+
+    display:none;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- 背景花朵 -->
+
+<div class="bg-flower flower-1">
+  🌸
+</div>
+
+<div class="bg-flower flower-2">
+  🌸
+</div>
+
+<div class="bg-flower flower-3">
+  🌸
+</div>
+
+<div class="bg-flower flower-4">
+  🌸
+</div>
+
+
+<div class="page">
+
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+
+    <div class="header-flower left">
+      🌸
+    </div>
+
+
+    <div class="brand-box">
+
+      <div class="brand">
+        囍莉旅遊
+      </div>
+
+    </div>
+
+
+    <div class="brand-sub">
+
+      ✈
+      <span>
+        跟著阿冷四處玩吧！！
+      </span>
+      ✈
+
+    </div>
+
+
+    <div class="header-flower right">
+      🌸
+    </div>
+
+
+    <div class="header-script">
+
+      Travel<br>
+      Happy<br>
+      Together ♡
+
+    </div>
+
+
+  </div>
+
+
+  <!-- 動態優惠券 -->
+
+  <div id="app">
+
+    <div class="loading">
+
+      🌸 優惠券載入中...
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   取得優惠券序號
+========================================= */
+
+const couponCode =
+  "<?= couponCode ?>";
+
+
+/* =========================================
+   HTML 防止特殊字元
+========================================= */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* =========================================
+   載入優惠券
+========================================= */
+
+window.addEventListener(
+
+  "DOMContentLoaded",
+
+  function(){
+
+    if(!couponCode){
+
+      showError(
+        "找不到優惠券編號，請確認連結是否正確"
+      );
+
+      return;
+
+    }
+
+
+    google.script.run
+
+      .withSuccessHandler(
+        renderCoupon
+      )
+
+      .withFailureHandler(
+        function(error){
+
+          showError(
+            error.message ||
+            "優惠券載入失敗"
+          );
+
+        }
+      )
+
+      .getCoupon(
+        couponCode
+      );
+
+  }
+
+);
+
+
+/* =========================================
+   顯示找不到優惠券
+========================================= */
+
+function showError(message){
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+
+  app.innerHTML = `
+
+    <div class="error-box">
+
+      <div class="error-icon">
+        ❌
+      </div>
+
+      <div class="error-title">
+        找不到優惠券
+      </div>
+
+      <div class="error-text">
+
+        ${
+          message ||
+          "此優惠券不存在或連結錯誤"
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================
+   顯示優惠券
+========================================= */
+
+function renderCoupon(data){
+
+
+  if(!data){
+
+    showError();
+
+    return;
+
+  }
+
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+
+  let statusClass = "";
+
+  let statusText =
+    data.status;
+
+
+  /* 未使用 */
+
+  if(
+    data.status === "未使用"
+  ){
+
+    statusText =
+      "✓ 未使用";
+
+  }
+
+
+  /* 已使用 */
+
+  if(
+    data.status === "已使用"
+  ){
+
+    statusClass =
+      "used";
+
+    statusText =
+      "✓ 已使用";
+
+  }
+
+
+  /* 已過期 */
+
+  if(
+    data.status === "已過期"
+  ){
+
+    statusClass =
+      "expired";
+
+    statusText =
+      "已過期";
+
+  }
+
+
+  app.innerHTML = `
+
+
+  <!-- =====================================
+       優惠券
+  ====================================== -->
+
+  <section class="coupon-card">
+
+
+    <div class="coupon-divider"></div>
+
+
+    <div class="coupon-inner">
+
+
+      <!-- 左邊 -->
+
+      <div class="coupon-left">
+
+
+        <div
+          class="
+            status
+            ${statusClass}
+          "
+        >
+
+          ${escapeHtml(statusText)}
+
+        </div>
+
+
+        <div class="left-travel-text">
+
+          一起出發<br>
+          看更大的世界<br>
+          ♡
+
+        </div>
+
+
+        <div class="discount-title">
+
+          折抵 NT$
+
+        </div>
+
+
+        <div class="discount">
+
+          ${escapeHtml(data.discount)}
+
+        </div>
+
+
+        <div class="heart-doodle">
+
+          ♡
+
+        </div>
+
+
+        <div class="info-box">
+
+
+          <!-- 優惠券號碼 -->
+
+          <div class="info-row">
+
+            <div class="info-icon">
+              🎟️
+            </div>
+
+            <div class="info-label">
+              優惠券號碼
+            </div>
+
+            <div class="info-value">
+
+              ${escapeHtml(data.code)}
+
+            </div>
+
+          </div>
+
+
+          <!-- 有效期限 -->
+
+          <div class="info-row">
+
+            <div class="info-icon">
+              🗓️
+            </div>
+
+            <div class="info-label">
+              有效期限
+            </div>
+
+            <div class="info-value">
+
+              ${escapeHtml(data.validUntil)}
+
+            </div>
+
+          </div>
+
+
+          <!-- 備註 -->
+
+          <div class="info-row">
+
+            <div class="info-icon">
+              📝
+            </div>
+
+            <div class="info-label">
+              備註
+            </div>
+
+            <div class="info-value">
+
+              ${
+                escapeHtml(
+                  data.note || "無"
+                )
+              }
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="travel-message">
+
+          期待與您一同出發<br>
+
+          創造美好的旅行回憶！ 💗
+
+        </div>
+
+
+      </div>
+
+
+      <!-- 右邊 -->
+
+      <div class="coupon-right">
+
+
+        <div class="qr-title">
+
+          請出示此 QR Code<br>
+
+          給工作人員掃描核銷
+
+        </div>
+
+
+        <div class="qr-box">
+
+          <img
+            src="${escapeHtml(data.qrUrl)}"
+            alt="優惠券 QR Code"
+          >
+
+        </div>
+
+
+        <div class="travel-button">
+
+          囍莉旅遊
+
+        </div>
+
+
+        <div class="travel-en">
+
+          TRAVEL ✈ HAPPY ✈ TOGETHER
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================
+       使用說明
+  ====================================== -->
+
+  <section class="section-card">
+
+
+    <div class="section-header">
+
+
+      <div class="section-title">
+
+        📣 使用說明
+
+      </div>
+
+
+      <div class="section-line"></div>
+
+
+      <div class="section-en">
+
+        Enjoy Your Journey ♥
+
+      </div>
+
+
+    </div>
+
+
+    <!-- 1 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        1
+      </div>
+
+      <div class="rule-name">
+        適用行程
+      </div>
+
+      <div class="rule-content">
+
+        本折價券限於
+
+        <span class="highlight">
+          囍莉旅遊指定旅遊行程報名時使用
+        </span>
+
+        ，實際適用團別及折抵金額依券面或活動公告為準。
+
+      </div>
+
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        2
+      </div>
+
+      <div class="rule-name">
+        使用方式
+      </div>
+
+      <div class="rule-content">
+
+        請於
+
+        <span class="highlight">
+          報名前主動出示本電子折價券
+        </span>
+
+        ，並由囍莉旅遊工作人員確認後進行核銷。
+
+      </div>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        3
+      </div>
+
+      <div class="rule-name">
+        使用次數
+      </div>
+
+      <div class="rule-content">
+
+        每張優惠券
+
+        <span class="highlight">
+          僅限使用一次
+        </span>
+
+        ，核銷成功後即自動失效。
+
+      </div>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        4
+      </div>
+
+      <div class="rule-name">
+        使用限制
+      </div>
+
+      <div class="rule-content">
+
+        <span class="highlight">
+          每一團每位旅客 限使用 1 張折價券
+        </span>
+
+        。
+
+      </div>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        5
+      </div>
+
+      <div class="rule-name">
+        使用期限
+      </div>
+
+      <div class="rule-content">
+
+        本折價券有效期限至
+
+        <span class="highlight">
+          券面顯示日期止
+        </span>
+
+        ，逾期自動失效。
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================
+       注意事項
+  ====================================== -->
+
+  <section class="section-card">
+
+
+    <div class="section-header">
+
+
+      <div class="section-title">
+
+        ⚠️ 注意事項
+
+      </div>
+
+
+      <div class="section-line"></div>
+
+
+      <div class="section-en">
+
+        Travel with Love ♥
+
+      </div>
+
+
+    </div>
+
+
+    <!-- 1 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        1
+      </div>
+
+      <div class="rule-name">
+        不得兌換現金
+      </div>
+
+      <div class="rule-content">
+
+        本折價券為活動贈送之旅遊折價券，
+
+        <span class="highlight">
+          不得兌換現金、找零或兌換其他等值商品
+        </span>
+
+        。
+
+      </div>
+
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        2
+      </div>
+
+      <div class="rule-name">
+        不得與其他優惠併用
+      </div>
+
+      <div class="rule-content">
+
+        本折價券
+
+        <span class="highlight">
+          不得與其他折扣、優惠或活動同時使用
+        </span>
+
+        。
+
+      </div>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        3
+      </div>
+
+      <div class="rule-name">
+        報名後無法補用
+      </div>
+
+      <div class="rule-content">
+
+        使用折價券時，須於
+
+        <span class="highlight">
+          報名前主動提出
+        </span>
+
+        ；
+
+        <span class="highlight">
+          完成報名後恕無法事後補用
+        </span>
+
+        。
+
+      </div>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        4
+      </div>
+
+      <div class="rule-name">
+        取消、退費或改團
+      </div>
+
+      <div class="rule-content">
+
+        如因旅客個人因素取消、退費或改團，
+
+        <span class="highlight">
+          本折價券恕不退還，亦不得再次使用
+        </span>
+
+        。
+
+        <br><br>
+
+        如因囍莉旅遊取消行程，或因天候、天然災害等不可抗力因素致行程取消，
+
+        <span class="highlight">
+          本折價券將退回並保留原使用資格
+        </span>
+
+        。
+
+      </div>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        5
+      </div>
+
+      <div class="rule-name">
+        不得轉售
+      </div>
+
+      <div class="rule-content">
+
+        本折價券
+
+        <span class="highlight">
+          不得轉售或作為其他商業用途
+        </span>
+
+        。
+
+      </div>
+
+    </div>
+
+
+    <!-- 6 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        6
+      </div>
+
+      <div class="rule-name">
+        妥善保管
+      </div>
+
+      <div class="rule-content">
+
+        請妥善保管本電子折價券及 QR Code，
+
+        <span class="highlight">
+          避免提供給他人使用
+        </span>
+
+        。
+
+        <br><br>
+
+        如因個人因素導致折價券遭他人使用或核銷，
+
+        <span class="highlight">
+          囍莉旅遊概不負責
+        </span>
+
+        。
+
+      </div>
+
+    </div>
+
+
+    <!-- 7 -->
+
+    <div class="rule-row">
+
+      <div class="rule-number">
+        7
+      </div>
+
+      <div class="rule-name">
+        其他事項
+      </div>
+
+      <div class="rule-content">
+
+        本折價券其他未列明事項，
+        依相關法令及雙方約定辦理。
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================
+       Footer
+  ====================================== -->
+
+  <footer class="footer">
+
+
+    <div class="footer-title">
+
+      一起把平凡的日子，變成值得收藏的回憶 ✨
+
+    </div>
+
+
+    <div class="footer-tags">
+
+      台南出發 ｜ 遊覽車旅行 ｜ 輕鬆慢遊 ｜ 溫暖同行
+
+    </div>
+
+
+    <div class="footer-brand">
+
+      🌸 囍莉旅遊 ｜ 台南出發小旅行 🌸
+
+    </div>
+
+
+    <div class="footer-text">
+
+      旅行最美的，不只是風景，而是一起出發的人。
+
+    </div>
+
+
+    <div class="footer-copy">
+
+      © 2026 囍莉旅遊 All Rights Reserved.
+
+    </div>
+
+
+    <div class="footer-script">
+
+      Small Trip<br>
+      Big Happiness<br>
+      ♡
+
+    </div>
+
+
+  </footer>
+
+
+  `;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
