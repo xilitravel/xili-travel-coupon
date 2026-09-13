@@ -1,508 +1,3084 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh-Hant">
 
-<title>囍莉旅遊｜電子優惠券</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>囍莉旅遊｜工作人員後台</title>
+
+
+<!-- =========================
+     字體
+========================= -->
+
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+TC:wght@400;500;600;700;800;900&family=Noto+Serif+TC:wght@500;600;700;800;900&display=swap"
+  rel="stylesheet"
+>
+
+
+<!-- =========================
+     QR Code 掃描工具
+========================= -->
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
 
 <style>
+
+/* =========================
+   基本設定
+========================= */
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
-  font-family: "Microsoft JhengHei", Arial, sans-serif;
+
+  margin: 0;
+
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(255, 190, 210, 0.35) 0 4px, transparent 5px),
-    radial-gradient(circle at 80% 10%, rgba(180, 220, 255, 0.4) 0 5px, transparent 6px),
-    radial-gradient(circle at 30% 80%, rgba(200, 240, 210, 0.4) 0 4px, transparent 5px),
-    linear-gradient(135deg, #fff7fa, #f5fbff, #f8fff8);
-  color: #333;
+
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    "PingFang TC",
+    sans-serif;
+
+  color: #655963;
+
   overflow-x: hidden;
+
+  position: relative;
+
+
+  /* =========================
+     粉嫩夢幻漸層背景
+  ========================= */
+
+  background:
+
+  radial-gradient(
+    circle at 8% 5%,
+    rgba(255,220,235,.65),
+    transparent 22%
+  ),
+
+  radial-gradient(
+    circle at 90% 5%,
+    rgba(255,170,205,.52),
+    transparent 28%
+  ),
+
+  radial-gradient(
+    circle at 5% 45%,
+    rgba(255,205,225,.50),
+    transparent 28%
+  ),
+
+  radial-gradient(
+    circle at 95% 45%,
+    rgba(255,190,215,.42),
+    transparent 30%
+  ),
+
+  radial-gradient(
+    circle at 10% 90%,
+    rgba(255,190,215,.50),
+    transparent 32%
+  ),
+
+  radial-gradient(
+    circle at 90% 90%,
+    rgba(255,185,215,.42),
+    transparent 32%
+  ),
+
+  radial-gradient(
+    circle at 50% 45%,
+    rgba(255,235,243,.72),
+    transparent 48%
+  ),
+
+  linear-gradient(
+    135deg,
+    #fdecef 0%,
+    #f9e4eb 25%,
+    #f8e8f0 50%,
+    #eee8f3 75%,
+    #fae7ed 100%
+  );
+
+  background-attachment: fixed;
+
 }
 
-/* 櫻花裝飾 */
-.sakura {
+
+/* =========================
+   背景大型光暈
+========================= */
+
+body::before {
+
+  content: "";
+
   position: fixed;
-  font-size: 24px;
-  opacity: 0.7;
-  animation: fall 8s linear infinite;
-  z-index: 0;
+
+  inset: 0;
+
   pointer-events: none;
+
+  z-index: -3;
+
+  background:
+
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255,210,225,.32),
+      transparent 18%
+    ),
+
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(255,195,220,.30),
+      transparent 20%
+    ),
+
+    radial-gradient(
+    circle at 50% 85%,
+    rgba(255,195,215,.28),
+    transparent 25%
+    );
+
+  animation:
+    backgroundGlow
+    12s
+    ease-in-out
+    infinite;
+
 }
 
-.s1 { left: 8%; animation-delay: 0s; }
-.s2 { left: 25%; animation-delay: 2s; font-size: 18px; }
-.s3 { left: 50%; animation-delay: 4s; }
-.s4 { left: 75%; animation-delay: 1s; font-size: 20px; }
-.s5 { left: 92%; animation-delay: 5s; }
 
-@keyframes fall {
+@keyframes backgroundGlow {
+
   0% {
-    top: -50px;
-    transform: rotate(0deg);
-  }
-
-  100% {
-    top: 100vh;
-    transform: rotate(360deg);
-  }
-}
-
-/* 右側風鈴 */
-.wind-chime {
-  position: fixed;
-  right: 25px;
-  top: 15px;
-  font-size: 55px;
-  z-index: 10;
-  animation: swing 2s ease-in-out infinite;
-  transform-origin: top center;
-}
-
-@keyframes swing {
-  0%, 100% {
-    transform: rotate(-8deg);
+    opacity: .6;
+    transform: scale(1);
   }
 
   50% {
-    transform: rotate(8deg);
+    opacity: 1;
+    transform: scale(1.08);
   }
+
+  100% {
+    opacity: .6;
+    transform: scale(1);
+  }
+
 }
 
-.container {
-  position: relative;
-  z-index: 2;
-  width: 92%;
-  max-width: 700px;
-  margin: auto;
-  padding: 40px 0;
+
+/* =========================
+   背景元素層
+========================= */
+
+.background-decor {
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  z-index: -1;
+
 }
 
-/* Logo */
-.logo {
-  text-align: center;
+
+/* =========================
+   漂浮元素
+========================= */
+
+.decor {
+
+  position: absolute;
+
+  user-select: none;
+
+}
+
+
+/* =========================
+   粉色雲朵
+========================= */
+
+.cloud {
+
+  position: absolute;
+
+  border-radius: 100px;
+
+  filter:
+    blur(.2px);
+
+  box-shadow:
+
+    inset
+    0
+    8px
+    18px
+    rgba(255,255,255,.18),
+
+    0
+    12px
+    35px
+    rgba(220,120,160,.10);
+
+}
+
+
+/* 雲朵主體 */
+
+.cloud::before,
+.cloud::after {
+
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+}
+
+
+/* =========================
+   雲朵 1
+========================= */
+
+.cloud-1 {
+
+  width: 180px;
+
+  height: 58px;
+
+  left: -45px;
+
+  top: 12%;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(245,155,190,.32),
+      rgba(255,190,215,.48)
+    );
+
+  animation:
+    cloudFloatOne
+    18s
+    ease-in-out
+    infinite;
+
+}
+
+
+.cloud-1::before {
+
+  width: 78px;
+
+  height: 78px;
+
+  left: 35px;
+
+  bottom: 18px;
+
+  background:
+    rgba(248,165,198,.38);
+
+}
+
+
+.cloud-1::after {
+
+  width: 105px;
+
+  height: 105px;
+
+  right: 22px;
+
+  bottom: 15px;
+
+  background:
+    rgba(255,185,210,.40);
+
+}
+
+
+/* =========================
+   雲朵 2
+========================= */
+
+.cloud-2 {
+
+  width: 220px;
+
+  height: 68px;
+
+  right: -55px;
+
+  top: 24%;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(225,170,215,.34),
+      rgba(245,175,210,.46)
+    );
+
+  animation:
+    cloudFloatTwo
+    22s
+    ease-in-out
+    infinite;
+
+}
+
+
+.cloud-2::before {
+
+  width: 95px;
+
+  height: 95px;
+
+  left: 38px;
+
+  bottom: 20px;
+
+  background:
+    rgba(230,165,210,.38);
+
+}
+
+
+.cloud-2::after {
+
+  width: 125px;
+
+  height: 125px;
+
+  right: 25px;
+
+  bottom: 18px;
+
+  background:
+    rgba(250,185,220,.40);
+
+}
+
+
+/* =========================
+   雲朵 3
+========================= */
+
+.cloud-3 {
+
+  width: 160px;
+
+  height: 52px;
+
+  left: 5%;
+
+  bottom: 18%;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(250,165,200,.30),
+      rgba(235,185,220,.44)
+    );
+
+  animation:
+    cloudFloatThree
+    20s
+    ease-in-out
+    infinite;
+
+}
+
+
+.cloud-3::before {
+
+  width: 70px;
+
+  height: 70px;
+
+  left: 30px;
+
+  bottom: 15px;
+
+  background:
+    rgba(250,170,205,.36);
+
+}
+
+
+.cloud-3::after {
+
+  width: 95px;
+
+  height: 95px;
+
+  right: 18px;
+
+  bottom: 15px;
+
+  background:
+    rgba(235,180,220,.38);
+
+}
+
+
+/* =========================
+   雲朵 4
+========================= */
+
+.cloud-4 {
+
+  width: 190px;
+
+  height: 60px;
+
+  right: 4%;
+
+  bottom: 10%;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(255,175,205,.30),
+      rgba(255,195,220,.42)
+    );
+
+  animation:
+    cloudFloatOne
+    25s
+    ease-in-out
+    infinite;
+
+}
+
+
+.cloud-4::before {
+
+  width: 82px;
+
+  height: 82px;
+
+  left: 35px;
+
+  bottom: 16px;
+
+  background:
+    rgba(240,170,210,.36);
+
+}
+
+
+.cloud-4::after {
+
+  width: 110px;
+
+  height: 110px;
+
+  right: 22px;
+
+  bottom: 15px;
+
+  background:
+    rgba(255,190,215,.36);
+
+}
+
+
+/* =========================
+   雲朵動畫
+========================= */
+
+@keyframes cloudFloatOne {
+
+  0% {
+
+    transform:
+      translateX(0)
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      translateX(35px)
+      translateY(-18px);
+
+  }
+
+  100% {
+
+    transform:
+      translateX(0)
+      translateY(0);
+
+  }
+
+}
+
+
+@keyframes cloudFloatTwo {
+
+  0% {
+
+    transform:
+      translateX(0)
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      translateX(-40px)
+      translateY(15px);
+
+  }
+
+  100% {
+
+    transform:
+      translateX(0)
+      translateY(0);
+
+  }
+
+}
+
+
+@keyframes cloudFloatThree {
+
+  0% {
+
+    transform:
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-22px)
+      translateX(20px);
+
+  }
+
+  100% {
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+
+/* =========================
+   櫻花
+========================= */
+
+.sakura-1 {
+
+  left: 6%;
+
+  top: 18%;
+
+  font-size: 55px;
+
+  color: rgba(221,110,150,.16);
+
+  animation:
+    floatOne
+    7s
+    ease-in-out
+    infinite;
+
+}
+
+
+.sakura-2 {
+
+  right: 8%;
+
+  top: 28%;
+
+  font-size: 48px;
+
+  color: rgba(230,130,170,.16);
+
+  animation:
+    floatTwo
+    9s
+    ease-in-out
+    infinite;
+
+}
+
+
+.sakura-3 {
+
+  left: 10%;
+
+  bottom: 14%;
+
+  font-size: 46px;
+
+  color: rgba(215,120,160,.13);
+
+  animation:
+    floatThree
+    8s
+    ease-in-out
+    infinite;
+
+}
+
+
+.sakura-4 {
+
+  right: 12%;
+
+  bottom: 10%;
+
+  font-size: 58px;
+
+  color: rgba(235,150,180,.14);
+
+  animation:
+    floatOne
+    10s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* =========================
+   新增櫻花
+========================= */
+
+.sakura-5 {
+
+  left: 20%;
+
+  top: 8%;
+
+  font-size: 36px;
+
+  color: rgba(235,130,170,.18);
+
+  animation:
+    floatTwo
+    9s
+    ease-in-out
+    infinite;
+
+}
+
+
+.sakura-6 {
+
+  right: 20%;
+
+  top: 48%;
+
   font-size: 42px;
-  font-weight: bold;
-  color: white;
-  text-shadow:
-    2px 2px 0 #f39ab5,
-    4px 4px 10px rgba(0,0,0,0.15);
-  margin-bottom: 15px;
-  position: relative;
+
+  color: rgba(220,120,165,.16);
+
+  animation:
+    floatOne
+    8s
+    ease-in-out
+    infinite;
+
 }
 
-.logo-bg {
-  background: #ffb6c9;
-  padding: 18px 35px;
-  border-radius: 45% 55% 50% 40%;
-  display: inline-block;
-  transform: rotate(-2deg);
-  box-shadow: 0 8px 20px rgba(255,150,180,0.3);
+
+.sakura-7 {
+
+  left: 42%;
+
+  bottom: 8%;
+
+  font-size: 34px;
+
+  color: rgba(230,140,175,.15);
+
+  animation:
+    floatThree
+    10s
+    ease-in-out
+    infinite;
+
 }
+
+
+/* =========================
+   愛心
+========================= */
+
+.heart-1 {
+
+  left: 16%;
+
+  top: 48%;
+
+  font-size: 30px;
+
+  color: rgba(220,110,150,.18);
+
+  animation:
+    heartFloat
+    6s
+    ease-in-out
+    infinite;
+
+}
+
+
+.heart-2 {
+
+  right: 16%;
+
+  top: 58%;
+
+  font-size: 34px;
+
+  color: rgba(220,110,160,.14);
+
+  animation:
+    heartFloat
+    8s
+    ease-in-out
+    infinite;
+
+}
+
+
+.heart-3 {
+
+  left: 32%;
+
+  bottom: 7%;
+
+  font-size: 24px;
+
+  color: rgba(220,120,160,.12);
+
+  animation:
+    heartFloat
+    7s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* =========================
+   星星
+========================= */
+
+.star-1 {
+
+  left: 22%;
+
+  top: 28%;
+
+  font-size: 25px;
+
+  color: rgba(220,150,180,.25);
+
+  animation:
+    twinkle
+    3s
+    ease-in-out
+    infinite;
+
+}
+
+
+.star-2 {
+
+  right: 24%;
+
+  top: 12%;
+
+  font-size: 30px;
+
+  color: rgba(235,150,185,.20);
+
+  animation:
+    twinkle
+    4s
+    ease-in-out
+    infinite;
+
+}
+
+
+.star-3 {
+
+  right: 30%;
+
+  bottom: 22%;
+
+  font-size: 22px;
+
+  color: rgba(220,140,170,.20);
+
+  animation:
+    twinkle
+    5s
+    ease-in-out
+    infinite;
+
+}
+
+
+.star-4 {
+
+  left: 28%;
+
+  bottom: 28%;
+
+  font-size: 20px;
+
+  color: rgba(235,155,190,.18);
+
+  animation:
+    twinkle
+    4s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* =========================
+   花瓣
+========================= */
+
+.petal {
+
+  position: absolute;
+
+  font-size: 22px;
+
+  color: rgba(235,130,165,.25);
+
+  animation:
+    falling
+    linear
+    infinite;
+
+}
+
+
+.petal-1 {
+
+  left: 12%;
+
+  top: -10%;
+
+  animation-duration: 12s;
+
+}
+
+
+.petal-2 {
+
+  left: 30%;
+
+  top: -20%;
+
+  animation-duration: 15s;
+
+  animation-delay: 3s;
+
+}
+
+
+.petal-3 {
+
+  left: 52%;
+
+  top: -15%;
+
+  animation-duration: 13s;
+
+  animation-delay: 6s;
+
+}
+
+
+.petal-4 {
+
+  left: 72%;
+
+  top: -10%;
+
+  animation-duration: 16s;
+
+  animation-delay: 2s;
+
+}
+
+
+.petal-5 {
+
+  left: 88%;
+
+  top: -20%;
+
+  animation-duration: 14s;
+
+  animation-delay: 5s;
+
+}
+
+
+/* =========================
+   漂浮動畫
+========================= */
+
+@keyframes floatOne {
+
+  0% {
+    transform:
+      translateY(0)
+      rotate(-8deg);
+  }
+
+  50% {
+    transform:
+      translateY(-18px)
+      rotate(8deg);
+  }
+
+  100% {
+    transform:
+      translateY(0)
+      rotate(-8deg);
+  }
+
+}
+
+
+@keyframes floatTwo {
+
+  0% {
+    transform:
+      translateY(0)
+      rotate(8deg);
+  }
+
+  50% {
+    transform:
+      translateY(15px)
+      rotate(-10deg);
+  }
+
+  100% {
+    transform:
+      translateY(0)
+      rotate(8deg);
+  }
+
+}
+
+
+@keyframes floatThree {
+
+  0% {
+    transform:
+      translateX(0)
+      rotate(0);
+  }
+
+  50% {
+    transform:
+      translateX(15px)
+      rotate(10deg);
+  }
+
+  100% {
+    transform:
+      translateX(0)
+      rotate(0);
+  }
+
+}
+
+
+@keyframes heartFloat {
+
+  0% {
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translateY(-15px)
+      scale(1.12);
+  }
+
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes twinkle {
+
+  0% {
+
+    opacity: .25;
+
+    transform:
+      scale(.8)
+      rotate(0);
+
+  }
+
+  50% {
+
+    opacity: .9;
+
+    transform:
+      scale(1.3)
+      rotate(20deg);
+
+  }
+
+  100% {
+
+    opacity: .25;
+
+    transform:
+      scale(.8)
+      rotate(0);
+
+  }
+
+}
+
+
+@keyframes falling {
+
+  0% {
+
+    transform:
+      translateY(-50px)
+      translateX(0)
+      rotate(0);
+
+    opacity: 0;
+
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+
+    transform:
+      translateY(55vh)
+      translateX(40px)
+      rotate(180deg);
+
+  }
+
+  100% {
+
+    transform:
+      translateY(110vh)
+      translateX(-30px)
+      rotate(360deg);
+
+    opacity: 0;
+
+  }
+
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.header-wrapper {
+
+  width: 100%;
+
+  margin: 0;
+
+  position: relative;
+
+}
+
+
+.header {
+
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    42px
+    20px
+    28px;
+
+  text-align: center;
+
+  overflow: hidden;
+
+}
+
+
+/* =========================
+   Header 左邊櫻花
+========================= */
+
+.header::before {
+
+  content: "✿";
+
+  position: absolute;
+
+  left: 6%;
+
+  top: 12px;
+
+  font-size: 92px;
+
+  color:
+    rgba(
+      218,
+      105,
+      145,
+      .15
+    );
+
+  transform:
+    rotate(-12deg);
+
+  text-shadow:
+
+    28px 35px 0
+    rgba(255,160,190,.08),
+
+    55px 5px 0
+    rgba(220,140,170,.06);
+
+  animation:
+    headerFlower
+    7s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes headerFlower {
+
+  0% {
+    transform:
+      rotate(-12deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      rotate(-5deg)
+      translateY(-8px);
+  }
+
+  100% {
+    transform:
+      rotate(-12deg)
+      translateY(0);
+  }
+
+}
+
+
+/* =========================
+   Header 右邊裝飾
+========================= */
+
+.header::after {
+
+  content: "✧  ♡  ✿";
+
+  position: absolute;
+
+  right: 6%;
+
+  top: 22px;
+
+  font-size: 42px;
+
+  letter-spacing: 10px;
+
+  color:
+    rgba(
+      195,
+      120,
+      160,
+      .16
+    );
+
+  transform:
+    rotate(8deg);
+
+  animation:
+    headerRight
+    6s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes headerRight {
+
+  0% {
+
+    transform:
+      rotate(8deg)
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      rotate(3deg)
+      translateY(-8px);
+
+  }
+
+  100% {
+
+    transform:
+      rotate(8deg)
+      translateY(0);
+
+  }
+
+}
+
+
+/* =========================
+   Header 額外裝飾
+========================= */
+
+.header-wrapper::before {
+
+  content: "🌸  ✧";
+
+  position: absolute;
+
+  left: 16%;
+
+  top: 75px;
+
+  font-size: 28px;
+
+  opacity: .28;
+
+  transform:
+    rotate(-25deg);
+
+  pointer-events: none;
+
+  animation:
+    floatOne
+    8s
+    ease-in-out
+    infinite;
+
+}
+
+
+.header-wrapper::after {
+
+  content: "♡  ✧";
+
+  position: absolute;
+
+  right: 17%;
+
+  top: 85px;
+
+  font-size: 36px;
+
+  color:
+    rgba(
+      220,
+      115,
+      150,
+      .22
+    );
+
+  transform:
+    rotate(18deg);
+
+  pointer-events: none;
+
+  animation:
+    floatTwo
+    8s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* =========================
+   Logo 區域
+========================= */
+
+.logo-area {
+
+  position: relative;
+
+  z-index: 3;
+
+  text-align: center;
+
+}
+
+
+/* =========================
+   主標題
+========================= */
+
+.logo {
+
+  display: block;
+
+  font-family:
+    "Noto Serif TC",
+    serif;
+
+  font-size: 62px;
+
+  font-weight: 900;
+
+  letter-spacing: 9px;
+
+  text-indent: 9px;
+
+  line-height: 1.25;
+
+  color: #a95770;
+
+  text-shadow:
+
+    0 2px 0
+    rgba(
+      255,
+      255,
+      255,
+      .75
+    ),
+
+    0 8px 20px
+    rgba(
+      160,
+      85,
+      110,
+      .14
+    );
+
+  animation:
+    logoAppear
+    1.2s
+    ease;
+
+}
+
+
+@keyframes logoAppear {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(-20px)
+      scale(.95);
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
+
+}
+
+
+/* =========================
+   副標題
+========================= */
 
 .subtitle {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #777;
+
+  margin-top: 12px;
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
   font-size: 16px;
+
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  color: #786c74;
+
 }
 
-/* 卡片 */
-.card {
-  background: rgba(255,255,255,0.92);
-  border-radius: 25px;
-  padding: 28px;
-  margin-bottom: 25px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  border: 2px solid rgba(255,255,255,0.8);
+
+/* =========================
+   英文文字區
+========================= */
+
+.travel-text-wrapper {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 14px;
+
 }
 
-.card h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
+
+.travel-line {
+
+  width: 55px;
+
+  height: 1px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent,
+      #d79aaa
+    );
+
 }
 
-/* 工作人員登入 */
+
+.travel-line.right {
+
+  background:
+
+    linear-gradient(
+      90deg,
+      #d79aaa,
+      transparent
+    );
+
+}
+
+
+/* =========================
+   英文文字
+========================= */
+
+.travel-text {
+
+  font-family:
+    "Great Vibes",
+    cursive;
+
+  font-size: 32px;
+
+  font-weight: 400;
+
+  color: #b76f88;
+
+  letter-spacing: 1px;
+
+  text-shadow:
+
+    0 3px 12px
+    rgba(
+      170,
+      90,
+      120,
+      .12
+    );
+
+  white-space: nowrap;
+
+}
+
+
+.travel-heart {
+
+  font-family:
+    "Great Vibes",
+    cursive;
+
+  font-size: 20px;
+
+  color: #d98ca5;
+
+  margin-left: -6px;
+
+  margin-top: -8px;
+
+  animation:
+    heartFloat
+    3s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* =========================
+   登入區域
+========================= */
+
 .login-box {
+
+  position: relative;
+
+  width:
+    min(
+      520px,
+      90%
+    );
+
+  margin:
+    30px
+    auto
+    60px;
+
+  padding:
+    34px
+    42px
+    38px;
+
+  border-radius: 34px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(
+        255,
+        255,
+        255,
+        .90
+      ),
+      rgba(
+        255,
+        250,
+        252,
+        .78
+      )
+    );
+
+  border:
+
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      .95
+    );
+
+  box-shadow:
+
+    0 20px 55px
+    rgba(
+      145,
+      90,
+      115,
+      .12
+    ),
+
+    inset
+    0
+    1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      .70
+    );
+
+  backdrop-filter:
+    blur(18px);
+
   text-align: center;
+
+  animation:
+    loginFloat
+    6s
+    ease-in-out
+    infinite;
+
 }
+
+
+.login-box::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+
+  height: 120px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      180,
+      205,
+      .12
+    );
+
+  top: -50px;
+
+  right: -35px;
+
+}
+
+
+.login-box::after {
+
+  content: "✿";
+
+  position: absolute;
+
+  left: 18px;
+
+  bottom: 14px;
+
+  font-size: 38px;
+
+  color:
+    rgba(
+      220,
+      130,
+      160,
+      .10
+    );
+
+}
+
+
+@keyframes loginFloat {
+
+  0% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-6px);
+  }
+
+  100% {
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* =========================
+   PIN 圖示
+========================= */
 
 .login-icon {
-  font-size: 42px;
-  margin-bottom: 10px;
+
+  width: 76px;
+
+  height: 76px;
+
+  margin:
+    0
+    auto
+    16px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 32px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #f8e8ec,
+      #efced8
+    );
+
+  box-shadow:
+
+    0 10px 25px
+    rgba(
+      200,
+      120,
+      145,
+      .15
+    ),
+
+    inset
+    0
+    2px
+    5px
+    rgba(
+      255,
+      255,
+      255,
+      .60
+    );
+
+  animation:
+    iconPulse
+    4s
+    ease-in-out
+    infinite;
+
 }
+
+
+@keyframes iconPulse {
+
+  0% {
+    transform:
+      scale(1);
+  }
+
+  50% {
+    transform:
+      scale(1.06);
+  }
+
+  100% {
+    transform:
+      scale(1);
+  }
+
+}
+
+
+/* =========================
+   登入標題
+========================= */
 
 .login-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+
+  text-align: center;
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
+  font-size: 32px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  text-indent: 4px;
+
+  color: #98566c;
+
+  margin-bottom: 26px;
+
 }
 
-input {
+
+/* =========================
+   Label
+========================= */
+
+label {
+
+  display: block;
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: #74656d;
+
+  margin-bottom: 10px;
+
+  text-align: left;
+
+}
+
+
+/* =========================
+   輸入框
+========================= */
+
+input,
+textarea {
+
   width: 100%;
-  padding: 15px;
-  border-radius: 15px;
-  border: 2px solid #eee;
-  font-size: 16px;
-  margin-bottom: 15px;
+
+  border:
+
+    1px solid
+    #ead5dc;
+
+  border-radius: 16px;
+
+  padding: 16px;
+
+  font-size: 17px;
+
   outline: none;
+
+  margin-bottom: 20px;
+
+  background:
+
+    rgba(
+      255,
+      255,
+      255,
+      .88
+    );
+
+  color: #555;
+
+  transition: .25s;
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
+  box-shadow:
+
+    inset
+    0
+    2px
+    6px
+    rgba(
+      180,
+      130,
+      145,
+      .04
+    );
+
 }
 
-input:focus {
-  border-color: #ff9fba;
+
+input:focus,
+textarea:focus {
+
+  border:
+    1px solid
+    #d889a0;
+
+  background: white;
+
+  box-shadow:
+
+    0 0 0 5px
+    rgba(
+      216,
+      137,
+      160,
+      .10
+    );
+
 }
 
-/* 按鈕 */
+
+/* =========================
+   PIN 輸入框
+========================= */
+
+#pin {
+
+  text-align: center;
+
+  font-size: 21px;
+
+  letter-spacing: 6px;
+
+  font-weight: 700;
+
+}
+
+
+/* =========================
+   textarea
+========================= */
+
+textarea {
+
+  height: 120px;
+
+  resize: vertical;
+
+}
+
+
+/* =========================
+   按鈕
+========================= */
+
 button {
+
+  position: relative;
+
+  overflow: hidden;
+
   border: none;
-  padding: 14px 20px;
-  border-radius: 15px;
-  font-size: 16px;
-  font-weight: bold;
+
+  border-radius: 16px;
+
+  padding: 17px;
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
+  font-size: 19px;
+
+  font-weight: 700;
+
   cursor: pointer;
-  margin: 5px;
-  transition: 0.2s;
+
+  width: 100%;
+
+  transition: .25s;
+
 }
+
+
+button::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -100%;
+
+  width: 70%;
+
+  height: 100%;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.35),
+      transparent
+    );
+
+  transform:
+    skewX(-25deg);
+
+  transition:
+    .6s;
+
+}
+
+
+button:hover::before {
+
+  left: 130%;
+
+}
+
 
 button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+
+  transform:
+    translateY(-3px);
+
 }
 
-.btn-pink {
-  background: #ff9fba;
+
+button:active {
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* =========================
+   登入按鈕
+========================= */
+
+.login-btn {
+
+  background:
+
+    linear-gradient(
+
+      135deg,
+
+      #e98ca8,
+
+      #c75d7c
+
+    );
+
   color: white;
+
+  box-shadow:
+
+    0 10px 22px
+    rgba(
+      201,
+      93,
+      124,
+      .22
+    );
+
 }
 
-.btn-blue {
-  background: #8ecdf5;
-  color: white;
-}
 
-.btn-green {
-  background: #91d6a2;
-  color: white;
-}
+/* =========================
+   Dashboard
+========================= */
 
-.btn-gray {
-  background: #eee;
-  color: #555;
-}
+.dashboard {
 
-/* 後台 */
-#staffPanel {
   display: none;
+
+  width:
+
+    min(
+      1300px,
+      92%
+    );
+
+  margin:
+
+    30px
+    auto
+    70px;
+
 }
 
-.menu-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+
+/* =========================
+   Dashboard Grid
+========================= */
+
+.dashboard-grid {
+
+  display: grid;
+
+  grid-template-columns:
+
+    1fr
+    1fr;
+
+  gap: 28px;
+
 }
 
-/* 功能區塊 */
-.section {
-  display: none;
+
+/* =========================
+   卡片
+========================= */
+
+.card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(
+        255,
+        255,
+        255,
+        .90
+      ),
+      rgba(
+        255,
+        250,
+        252,
+        .80
+      )
+    );
+
+  border-radius: 32px;
+
+  padding: 35px;
+
+  border:
+
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      .90
+    );
+
+  box-shadow:
+
+    0 20px 50px
+    rgba(
+      130,
+      80,
+      110,
+      .12
+    );
+
+  backdrop-filter:
+    blur(15px);
+
+  transition:
+    .35s;
+
 }
 
-.section.active {
-  display: block;
+
+.card:hover {
+
+  transform:
+    translateY(-6px);
+
+  box-shadow:
+
+    0 28px 65px
+    rgba(
+      130,
+      80,
+      110,
+      .16
+    );
+
 }
 
-/* 優惠券 */
-.coupon {
-  background: linear-gradient(135deg, #fff0f5, #f0f9ff);
-  border: 2px dashed #ff9fba;
-  border-radius: 25px;
-  padding: 25px;
-  text-align: center;
-  margin-top: 20px;
+
+.card::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 6px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      #f1b9c8,
+      #f9dfe5,
+      #dce8ef,
+      #f5d0d9
+    );
+
 }
 
-.coupon h3 {
-  font-size: 26px;
-  margin-bottom: 15px;
+
+.card::after {
+
+  content: "✧";
+
+  position: absolute;
+
+  right: 22px;
+
+  bottom: 16px;
+
+  font-size: 34px;
+
+  color:
+    rgba(
+      220,
+      150,
+      180,
+      .10
+    );
+
 }
 
-.coupon-code {
-  background: white;
-  padding: 15px;
-  border-radius: 15px;
-  font-size: 22px;
-  font-weight: bold;
-  color: #ff6f9d;
+
+/* =========================
+   卡片標題
+========================= */
+
+.card-title {
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  margin-bottom: 28px;
+
   letter-spacing: 2px;
-  margin: 15px 0;
+
 }
 
-.qr-box {
-  margin: 20px auto;
-  background: white;
-  padding: 15px;
+
+/* =========================
+   粉紅標題
+========================= */
+
+.pink-title {
+
+  color: #c95f80;
+
+}
+
+
+/* =========================
+   粉紅按鈕
+========================= */
+
+.pink-btn {
+
+  background:
+
+    linear-gradient(
+
+      135deg,
+
+      #f39ab5,
+
+      #d96a8b
+
+    );
+
+  color: white;
+
+}
+
+
+/* =========================
+   粉藍標題
+========================= */
+
+.blue-title {
+
+  color: #5e9fbd;
+
+}
+
+
+/* =========================
+   粉藍按鈕
+========================= */
+
+.blue-btn {
+
+  background:
+
+    linear-gradient(
+
+      135deg,
+
+      #9fd9ef,
+
+      #6fb9d8
+
+    );
+
+  color: white;
+
+}
+
+
+/* =========================
+   粉綠標題
+========================= */
+
+.green-title {
+
+  color: #5fa885;
+
+}
+
+
+/* =========================
+   粉綠按鈕
+========================= */
+
+.green-btn {
+
+  background:
+
+    linear-gradient(
+
+      135deg,
+
+      #9fdfbb,
+
+      #65b98b
+
+    );
+
+  color: white;
+
+}
+
+
+/* =========================
+   分隔線
+========================= */
+
+.divider {
+
+  height: 1px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent,
+      #e7d2db,
+      #d7e2e8,
+      #e7d2db,
+      transparent
+    );
+
+  margin:
+
+    32px
+    0;
+
+}
+
+
+/* =========================
+   QR Scanner
+========================= */
+
+#reader {
+
+  width: 100%;
+
+  margin: auto;
+
+  overflow: hidden;
+
   border-radius: 20px;
-  width: fit-content;
+
+  background: white;
+
 }
 
-.qr-box canvas {
-  max-width: 100%;
+
+#reader video {
+
+  border-radius: 18px;
+
 }
 
-/* 核銷結果 */
-.result {
-  margin-top: 20px;
-  padding: 18px;
-  border-radius: 15px;
-  text-align: center;
-  font-weight: bold;
+
+/* =========================
+   QR 按鈕
+========================= */
+
+.camera-buttons {
+
+  margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   結果訊息
+========================= */
+
+.result-box {
+
   display: none;
+
+  margin-top: 20px;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  line-height: 1.8;
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
 }
+
+
+/* =========================
+   成功
+========================= */
 
 .success {
-  background: #e8faec;
-  color: #27803b;
+
+  display: block;
+
+  background: #e8f8ef;
+
+  color: #3b8c61;
+
 }
+
+
+/* =========================
+   錯誤
+========================= */
 
 .error {
-  background: #fff0f0;
-  color: #d64b4b;
+
+  display: block;
+
+  background: #fff0f2;
+
+  color: #c44f68;
+
 }
 
-/* 手機 */
-@media (max-width: 600px) {
 
-  .container {
-    width: 94%;
-    padding-top: 30px;
+/* =========================
+   建立結果
+========================= */
+
+.coupon-list {
+
+  margin-top: 28px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(
+        255,
+        247,
+        249,
+        .90
+      ),
+      rgba(
+        255,
+        250,
+        252,
+        .82
+      )
+    );
+
+  border-radius: 22px;
+
+  padding: 22px;
+
+  border:
+
+    1px solid
+    #f4dfe5;
+
+}
+
+
+/* =========================
+   建立成功標題
+========================= */
+
+.coupon-list h2 {
+
+  font-family:
+    "Noto Sans TC",
+    sans-serif;
+
+  color: #c95f80;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+}
+
+
+/* =========================
+   優惠券項目
+========================= */
+
+.coupon-item {
+
+  background:
+
+    rgba(
+      255,
+      255,
+      255,
+      .95
+    );
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  margin-bottom: 16px;
+
+  line-height: 1.9;
+
+  border:
+
+    1px solid
+    #f0dce3;
+
+  box-shadow:
+
+    0 6px 18px
+    rgba(
+      180,
+      120,
+      140,
+      .07
+    );
+
+}
+
+
+/* =========================
+   客人連結
+========================= */
+
+.link-box {
+
+  word-break: break-all;
+
+  color: #4d91b5;
+
+  font-size: 14px;
+
+  margin-top: 5px;
+
+}
+
+
+.link-box a {
+
+  color: #4d91b5;
+
+}
+
+
+/* =========================
+   手機版
+========================= */
+
+@media
+(
+  max-width: 850px
+) {
+
+  .dashboard-grid {
+
+    grid-template-columns:
+      1fr;
+
   }
+
+
+  .header {
+
+    padding:
+
+      32px
+      15px
+      26px;
+
+  }
+
 
   .logo {
-    font-size: 32px;
+
+    font-size: 52px;
+
+    letter-spacing: 7px;
+
+    text-indent: 7px;
+
   }
+
+
+  .subtitle {
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+  }
+
+
+  .travel-text {
+
+    font-size: 27px;
+
+  }
+
+
+  .travel-line {
+
+    width: 35px;
+
+  }
+
+
+  .header::before {
+
+    left: 3%;
+
+    top: 18px;
+
+    font-size: 55px;
+
+  }
+
+
+  .header::after {
+
+    right: 3%;
+
+    font-size: 28px;
+
+  }
+
+
+  .login-box {
+
+    padding:
+
+      28px
+      25px
+      30px;
+
+    margin-top: 26px;
+
+  }
+
+
+  .login-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    font-size: 30px;
+
+  }
+
 
   .card {
-    padding: 20px;
+
+    padding: 25px;
+
   }
 
-  .wind-chime {
-    font-size: 40px;
-    right: 10px;
+
+  .card-title {
+
+    font-size: 28px;
+
+  }
+
+
+  button {
+
+    font-size: 18px;
+
+    padding: 17px;
+
+  }
+
+
+  .dashboard {
+
+    width: 94%;
+
+  }
+
+
+  .sakura-1,
+  .sakura-2,
+  .sakura-3,
+  .sakura-4 {
+
+    font-size: 36px;
+
+  }
+
+
+  .cloud-1,
+  .cloud-2,
+  .cloud-3,
+  .cloud-4 {
+
+    transform:
+      scale(.75);
+
   }
 
 }
+
+
+/* =========================
+   小手機
+========================= */
+
+@media
+(
+  max-width: 480px
+) {
+
+  .header {
+
+    padding-top: 28px;
+
+  }
+
+
+  .logo {
+
+    font-size: 42px;
+
+    letter-spacing: 5px;
+
+    text-indent: 5px;
+
+  }
+
+
+  .subtitle {
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+  }
+
+
+  .travel-text {
+
+    font-size: 23px;
+
+  }
+
+
+  .travel-line {
+
+    width: 22px;
+
+  }
+
+
+  .login-title {
+
+    font-size: 29px;
+
+  }
+
+
+  .card {
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+  }
+
+
+  .login-box {
+
+    width: 92%;
+
+  }
+
+
+  .card-title {
+
+    font-size: 26px;
+
+  }
+
+
+  button {
+
+    font-size: 17px;
+
+    padding: 16px;
+
+  }
+
+
+  .decor {
+
+    opacity: .7;
+
+  }
+
+
+  .cloud {
+
+    opacity: .7;
+
+    transform:
+      scale(.6);
+
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- 櫻花 -->
-<div class="sakura s1">🌸</div>
-<div class="sakura s2">🌸</div>
-<div class="sakura s3">🌸</div>
-<div class="sakura s4">🌸</div>
-<div class="sakura s5">🌸</div>
 
-<!-- 風鈴 -->
-<div class="wind-chime">🎐</div>
+<!-- =========================
+     背景漂浮元素
+========================= -->
 
-<div class="container">
+<div class="background-decor">
 
-  <!-- 標題 -->
 
-  <div style="text-align:center;">
-    <div class="logo-bg">
-      <div class="logo">🎉 囍莉旅遊</div>
-    </div>
+  <!-- 粉色雲朵 -->
+
+  <div class="cloud cloud-1"></div>
+
+  <div class="cloud cloud-2"></div>
+
+  <div class="cloud cloud-3"></div>
+
+  <div class="cloud cloud-4"></div>
+
+
+  <!-- 櫻花 -->
+
+  <div class="decor sakura-1">
+    ✿
   </div>
 
-  <div class="subtitle">
-    電子優惠券系統 🎫
+  <div class="decor sakura-2">
+    ✿
   </div>
 
+  <div class="decor sakura-3">
+    ❀
+  </div>
 
-  <!-- 登入 -->
+  <div class="decor sakura-4">
+    ✿
+  </div>
 
-  <div class="card" id="loginPanel">
+  <div class="decor sakura-5">
+    ❀
+  </div>
 
-    <div class="login-box">
+  <div class="decor sakura-6">
+    ✿
+  </div>
 
-      <div class="login-icon">
-        🔐
-      </div>
-
-      <div class="login-title">
-        工作人員驗證
-      </div>
-
-      <input
-        type="password"
-        id="pinInput"
-        placeholder="輸入 PIN"
-      >
-
-      <button
-        class="btn-pink"
-        onclick="login()"
-      >
-        🌸 進入囍莉旅遊後台
-      </button>
-
-    </div>
-
+  <div class="decor sakura-7">
+    ❀
   </div>
 
 
-  <!-- 後台 -->
+  <!-- 愛心 -->
 
-  <div id="staffPanel">
+  <div class="decor heart-1">
+    ♡
+  </div>
 
-    <div class="card">
+  <div class="decor heart-2">
+    ♡
+  </div>
 
-      <h2>
-        🌸 囍莉旅遊工作人員後台
-      </h2>
+  <div class="decor heart-3">
+    ♥
+  </div>
 
-      <div class="menu-buttons">
 
-        <button
-          class="btn-pink"
-          onclick="showSection('createSection')"
-        >
-          🎫 建立優惠券
-        </button>
+  <!-- 星星 -->
 
-        <button
-          class="btn-blue"
-          onclick="showSection('redeemSection')"
-        >
-          📷 核銷優惠券
-        </button>
+  <div class="decor star-1">
+    ✧
+  </div>
 
-        <button
-          class="btn-green"
-          onclick="showSection('listSection')"
-        >
-          📋 優惠券紀錄
-        </button>
+  <div class="decor star-2">
+    ✦
+  </div>
 
+  <div class="decor star-3">
+    ✧
+  </div>
+
+  <div class="decor star-4">
+    ✦
+  </div>
+
+
+  <!-- 落櫻 -->
+
+  <div class="petal petal-1">
+    ❀
+  </div>
+
+  <div class="petal petal-2">
+    ✿
+  </div>
+
+  <div class="petal petal-3">
+    ❀
+  </div>
+
+  <div class="petal petal-4">
+    ✿
+  </div>
+
+  <div class="petal petal-5">
+    ❀
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     Header
+========================= -->
+
+<div class="header-wrapper">
+
+  <div class="header">
+
+    <div class="logo-area">
+
+      <div class="logo">
+        囍莉旅遊
       </div>
 
-    </div>
+
+      <div class="subtitle">
+        電子優惠券｜工作人員後台
+      </div>
 
 
-    <!-- 建立優惠券 -->
+      <div class="travel-text-wrapper">
 
-    <div
-      class="card section"
-      id="createSection"
-    >
+        <div class="travel-line"></div>
 
-      <h2>
-        🎫 建立新優惠券
-      </h2>
-
-      <input
-        type="text"
-        id="couponName"
-        placeholder="優惠券名稱，例如：台南一日遊折價券"
-      >
-
-      <input
-        type="number"
-        id="couponAmount"
-        placeholder="優惠金額，例如：100"
-      >
-
-      <button
-        class="btn-pink"
-        onclick="createCoupon()"
-      >
-        🌸 建立優惠券
-      </button>
-
-
-      <div
-        id="newCoupon"
-        class="coupon"
-        style="display:none;"
-      >
-
-        <h3 id="newCouponName"></h3>
-
-        <div>
-          優惠金額
+        <div class="travel-text">
+          Travel Happy Together
         </div>
 
-        <h2 id="newCouponAmount"></h2>
-
-        <div class="coupon-code" id="newCouponCode"></div>
-
-        <div class="qr-box">
-
-          <canvas id="qrCanvas"></canvas>
-
+        <div class="travel-heart">
+          ♡
         </div>
 
-        <p>
-          請將此優惠券 QR Code 提供給客人
-        </p>
+        <div class="travel-line right"></div>
 
       </div>
-
-    </div>
-
-
-    <!-- 核銷 -->
-
-    <div
-      class="card section"
-      id="redeemSection"
-    >
-
-      <h2>
-        📷 核銷優惠券
-      </h2>
-
-      <input
-        type="text"
-        id="redeemCode"
-        placeholder="輸入優惠券代碼"
-      >
-
-      <button
-        class="btn-blue"
-        onclick="redeemCoupon()"
-      >
-        ✅ 核銷優惠券
-      </button>
-
-      <div
-        id="redeemResult"
-        class="result"
-      ></div>
-
-    </div>
-
-
-    <!-- 紀錄 -->
-
-    <div
-      class="card section"
-      id="listSection"
-    >
-
-      <h2>
-        📋 優惠券紀錄
-      </h2>
-
-      <div id="couponList"></div>
 
     </div>
 
@@ -511,13 +3087,232 @@ button:hover {
 </div>
 
 
+
+<!-- =========================
+     PIN 登入
+========================= -->
+
+<div
+  class="login-box"
+  id="loginBox"
+>
+
+  <div class="login-icon">
+    🔐
+  </div>
+
+
+  <div class="login-title">
+    工作人員驗證
+  </div>
+
+
+  <label>
+    工作人員 PIN
+  </label>
+
+
+  <input
+    id="pin"
+    type="password"
+    placeholder="輸入 PIN"
+    onkeydown="
+      if(event.key === 'Enter')
+      {
+        login();
+      }
+    "
+  >
+
+
+  <button
+    class="login-btn"
+    onclick="login()"
+  >
+    🌸 進入囍莉旅遊後台
+  </button>
+
+
+  <div
+    id="loginMessage"
+    class="result-box"
+  >
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     後台
+========================= -->
+
+<div
+  class="dashboard"
+  id="dashboard"
+>
+
+  <div class="dashboard-grid">
+
+
+    <!-- 建立優惠券 -->
+
+    <div class="card">
+
+      <div
+        class="
+          card-title
+          pink-title
+        "
+      >
+        🎟️ 建立優惠券
+      </div>
+
+
+      <label>
+        建立數量
+      </label>
+
+
+      <input
+        id="quantity"
+        type="number"
+        value="1"
+        min="1"
+        max="100"
+      >
+
+
+      <label>
+        折扣金額
+      </label>
+
+
+      <input
+        id="discount"
+        type="number"
+        value="100"
+      >
+
+
+      <label>
+        備註
+      </label>
+
+
+      <textarea
+        id="note"
+        placeholder="請輸入優惠券備註"
+      ></textarea>
+
+
+      <button
+        class="pink-btn"
+        onclick="createCoupons()"
+      >
+        🎉 建立優惠券
+      </button>
+
+
+      <div
+        id="createResult"
+        class="coupon-list"
+      >
+        建立優惠券後
+        客人連結會出現在這裡
+      </div>
+
+    </div>
+
+
+
+    <!-- 核銷 -->
+
+    <div class="card">
+
+      <div
+        class="
+          card-title
+          blue-title
+        "
+      >
+        📷 優惠券核銷
+      </div>
+
+
+      <div class="camera-buttons">
+
+        <button
+          class="blue-btn"
+          onclick="startScanner()"
+        >
+          📷 開啟相機掃描
+        </button>
+
+      </div>
+
+
+      <div id="reader"></div>
+
+
+      <div class="divider"></div>
+
+
+      <!-- 手動輸入 -->
+
+      <div
+        class="
+          card-title
+          green-title
+        "
+      >
+        ⌨️ 手動輸入券號
+      </div>
+
+
+      <input
+        id="manualCode"
+        placeholder="例如 XL-ABCD-1234"
+        onkeydown="
+          if(event.key === 'Enter')
+          {
+            redeemManual();
+          }
+        "
+      >
+
+
+      <button
+        class="green-btn"
+        onclick="redeemManual()"
+      >
+        ☑️ 確認核銷
+      </button>
+
+
+      <div
+        id="redeemResult"
+        class="result-box"
+      >
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
 <script>
 
-/* =========================
-   PIN 設定
-========================= */
 
-const STAFF_PIN = "1234";
+let html5QrCode =
+  null;
+
+
+let scannerRunning =
+  false;
 
 
 /* =========================
@@ -527,445 +3322,695 @@ const STAFF_PIN = "1234";
 function login() {
 
   const pin =
-    document.getElementById("pinInput").value;
+    document
+      .getElementById(
+        "pin"
+      )
+      .value;
 
-  if (pin === STAFF_PIN) {
 
-    document.getElementById(
-      "loginPanel"
-    ).style.display = "none";
+  google.script.run
 
+    .withSuccessHandler(
 
-    document.getElementById(
-      "staffPanel"
-    ).style.display = "block";
+      function(result) {
 
+        const message =
+          document
+            .getElementById(
+              "loginMessage"
+            );
 
-    showSection("createSection");
 
+        if (
+          result.success
+        ) {
 
-  } else {
+          document
+            .getElementById(
+              "loginBox"
+            )
+            .style
+            .display =
+              "none";
 
-    alert("PIN 錯誤，請重新輸入");
 
-  }
+          document
+            .getElementById(
+              "dashboard"
+            )
+            .style
+            .display =
+              "block";
 
-}
+        }
 
+        else {
 
-/* =========================
-   顯示功能
-========================= */
+          message.className =
+            "result-box error";
 
-function showSection(id) {
 
-  const sections =
-    document.querySelectorAll(".section");
+          message.style.display =
+            "block";
 
 
-  sections.forEach(section => {
+          message.innerHTML =
+            "❌ "
+            +
+            result.message;
 
-    section.classList.remove("active");
-
-  });
-
-
-  document
-    .getElementById(id)
-    .classList
-    .add("active");
-
-
-  if (id === "listSection") {
-
-    renderCoupons();
-
-  }
-
-}
-
-
-/* =========================
-   取得優惠券資料
-========================= */
-
-function getCoupons() {
-
-  return JSON.parse(
-    localStorage.getItem("xiliCoupons")
-  ) || [];
-
-}
-
-
-/* =========================
-   儲存優惠券資料
-========================= */
-
-function saveCoupons(coupons) {
-
-  localStorage.setItem(
-    "xiliCoupons",
-    JSON.stringify(coupons)
-  );
-
-}
-
-
-/* =========================
-   產生優惠券
-========================= */
-
-function createCoupon() {
-
-  const name =
-    document.getElementById("couponName").value;
-
-  const amount =
-    document.getElementById("couponAmount").value;
-
-
-  if (!name || !amount) {
-
-    alert("請填寫優惠券名稱與金額");
-
-    return;
-
-  }
-
-
-  const code =
-    "XL" +
-    Date.now()
-      .toString()
-      .slice(-8) +
-    Math.floor(Math.random() * 1000);
-
-
-  const coupon = {
-
-    code: code,
-
-    name: name,
-
-    amount: amount,
-
-    used: false,
-
-    createdAt:
-      new Date()
-        .toLocaleString()
-
-  };
-
-
-  const coupons =
-    getCoupons();
-
-
-  coupons.push(coupon);
-
-
-  saveCoupons(coupons);
-
-
-  document.getElementById(
-    "newCoupon"
-  ).style.display = "block";
-
-
-  document.getElementById(
-    "newCouponName"
-  ).innerText = name;
-
-
-  document.getElementById(
-    "newCouponAmount"
-  ).innerText =
-    "NT$ " + amount;
-
-
-  document.getElementById(
-    "newCouponCode"
-  ).innerText = code;
-
-
-  drawQRCode(code);
-
-
-  alert("優惠券建立成功！");
-
-}
-
-
-/* =========================
-   QR Code
-   簡易視覺代碼
-========================= */
-
-function drawQRCode(text) {
-
-  const canvas =
-    document.getElementById("qrCanvas");
-
-
-  const ctx =
-    canvas.getContext("2d");
-
-
-  canvas.width = 220;
-
-  canvas.height = 220;
-
-
-  ctx.fillStyle = "white";
-
-  ctx.fillRect(
-    0,
-    0,
-    220,
-    220
-  );
-
-
-  const size = 10;
-
-
-  for (
-    let y = 0;
-    y < 22;
-    y++
-  ) {
-
-    for (
-      let x = 0;
-      x < 22;
-      x++
-    ) {
-
-      const char =
-        text.charCodeAt(
-          (x + y) % text.length
-        );
-
-
-      if (
-        (char + x * 7 + y * 3)
-        % 2 === 0
-      ) {
-
-        ctx.fillStyle = "#222";
-
-        ctx.fillRect(
-          x * size,
-          y * size,
-          size,
-          size
-        );
+        }
 
       }
 
-    }
+    )
 
-  }
+    .withFailureHandler(
+
+      function(error) {
+
+        const message =
+          document
+            .getElementById(
+              "loginMessage"
+            );
 
 
-  ctx.fillStyle = "#ff9fba";
+        message.className =
+          "result-box error";
 
-  ctx.font = "14px Arial";
 
-  ctx.textAlign = "center";
+        message.style.display =
+          "block";
 
-  ctx.fillText(
-    "囍莉旅遊",
-    110,
-    210
-  );
+
+        message.innerHTML =
+          "❌ "
+          +
+          error.message;
+
+      }
+
+    )
+
+    .loginStaff(
+      pin
+    );
 
 }
 
 
 /* =========================
-   核銷優惠券
+   建立優惠券
 ========================= */
 
-function redeemCoupon() {
+function createCoupons() {
 
-  const code =
+  const quantity =
     document
-      .getElementById("redeemCode")
+      .getElementById(
+        "quantity"
+      )
+      .value;
+
+
+  const discount =
+    document
+      .getElementById(
+        "discount"
+      )
+      .value;
+
+
+  const note =
+    document
+      .getElementById(
+        "note"
+      )
+      .value;
+
+
+  const resultBox =
+    document
+      .getElementById(
+        "createResult"
+      );
+
+
+  resultBox.innerHTML =
+    "⏳ 建立中...";
+
+
+  google.script.run
+
+    .withSuccessHandler(
+
+      function(result) {
+
+        let html =
+          "<h2>🎉 優惠券建立成功</h2>";
+
+
+        result.coupons
+          .forEach(
+
+            function(coupon) {
+
+              html +=
+
+                '<div class="coupon-item">'
+
+                +
+
+                "<b>🎫 優惠券：</b> "
+
+                +
+
+                coupon.code
+
+                +
+
+                "<br>"
+
+                +
+
+                "<b>💰 折扣：</b> NT$ "
+
+                +
+
+                coupon.discount
+
+                +
+
+                "<br>"
+
+                +
+
+                "<b>📅 有效期限：</b> "
+
+                +
+
+                coupon.validUntil
+
+                +
+
+                "<br>"
+
+                +
+
+                "<b>📝 備註：</b> "
+
+                +
+
+                (
+                  coupon.note
+                  ||
+                  "無"
+                )
+
+                +
+
+                "<br><br>"
+
+                +
+
+                "<b>🔗 客人連結：</b>"
+
+                +
+
+                '<div class="link-box">'
+
+                +
+
+                '<a '
+
+                +
+
+                'href="'
+
+                +
+
+                coupon.customerUrl
+
+                +
+
+                '" '
+
+                +
+
+                'target="_blank"'
+
+                +
+
+                ">"
+
+                +
+
+                coupon.customerUrl
+
+                +
+
+                "</a>"
+
+                +
+
+                "</div>"
+
+                +
+
+                "</div>";
+
+            }
+
+          );
+
+
+        resultBox.innerHTML =
+          html;
+
+      }
+
+    )
+
+    .withFailureHandler(
+
+      function(error) {
+
+        resultBox.innerHTML =
+          "❌ "
+          +
+          error.message;
+
+      }
+
+    )
+
+    .createCoupons(
+      quantity,
+      discount,
+      note
+    );
+
+}
+
+
+/* =========================
+   手動核銷
+========================= */
+
+function redeemManual() {
+
+  const input =
+    document
+      .getElementById(
+        "manualCode"
+      )
       .value
       .trim();
 
 
-  const result =
-    document.getElementById(
-      "redeemResult"
+  if (!input) {
+
+    showRedeemResult(
+      false,
+      "請輸入優惠券序號"
     );
-
-
-  const coupons =
-    getCoupons();
-
-
-  const coupon =
-    coupons.find(
-      item => item.code === code
-    );
-
-
-  result.style.display = "block";
-
-
-  if (!coupon) {
-
-    result.className =
-      "result error";
-
-
-    result.innerHTML =
-      "❌ 找不到這張優惠券<br>請確認優惠券代碼是否正確";
 
     return;
 
   }
 
 
-  if (coupon.used) {
-
-    result.className =
-      "result error";
-
-
-    result.innerHTML =
-      "⚠️ 此優惠券已經核銷過了";
-
-    return;
-
-  }
-
-
-  coupon.used = true;
-
-  coupon.usedAt =
-    new Date()
-      .toLocaleString();
-
-
-  saveCoupons(coupons);
-
-
-  result.className =
-    "result success";
-
-
-  result.innerHTML =
-    `
-    🎉 核銷成功！<br><br>
-
-    優惠券：
-    ${coupon.name}<br>
-
-    金額：
-    NT$ ${coupon.amount}<br><br>
-
-    優惠券代碼：
-    ${coupon.code}
-    `;
-
-
-  document
-    .getElementById("redeemCode")
-    .value = "";
+  redeemCoupon(
+    input
+  );
 
 }
 
 
 /* =========================
-   顯示優惠券紀錄
+   執行核銷
 ========================= */
 
-function renderCoupons() {
+function redeemCoupon(input) {
 
-  const coupons =
-    getCoupons();
+  showRedeemResult(
+    null,
+    "⏳ 核銷中..."
+  );
 
 
-  const list =
-    document.getElementById(
-      "couponList"
+  google.script.run
+
+    .withSuccessHandler(
+
+      function(result) {
+
+        if (
+          result.success
+        ) {
+
+          showRedeemResult(
+
+            true,
+
+            result.message
+
+            +
+
+            "<br><br>"
+
+            +
+
+            "🎫 優惠券："
+
+            +
+
+            result.code
+
+            +
+
+            "<br>"
+
+            +
+
+            "💰 折扣：NT$ "
+
+            +
+
+            result.discount
+
+            +
+
+            "<br>"
+
+            +
+
+            "🕒 核銷時間："
+
+            +
+
+            result.usedDate
+
+          );
+
+
+          document
+            .getElementById(
+              "manualCode"
+            )
+            .value =
+              "";
+
+        }
+
+        else {
+
+          showRedeemResult(
+            false,
+            result.message
+          );
+
+        }
+
+      }
+
+    )
+
+    .withFailureHandler(
+
+      function(error) {
+
+        showRedeemResult(
+          false,
+          error.message
+        );
+
+      }
+
+    )
+
+    .redeemCoupon(
+      input
     );
 
+}
 
-  if (coupons.length === 0) {
 
-    list.innerHTML =
-      "<p style='text-align:center;'>目前還沒有優惠券</p>";
+/* =========================
+   顯示核銷結果
+========================= */
+
+function showRedeemResult(
+  success,
+  message
+) {
+
+  const box =
+    document
+      .getElementById(
+        "redeemResult"
+      );
+
+
+  box.style.display =
+    "block";
+
+
+  box.className =
+    "result-box";
+
+
+  if (
+    success === true
+  ) {
+
+    box.className +=
+      " success";
+
+  }
+
+
+  if (
+    success === false
+  ) {
+
+    box.className +=
+      " error";
+
+  }
+
+
+  box.innerHTML =
+    message;
+
+}
+
+
+/* =========================
+   開啟相機
+========================= */
+
+function startScanner() {
+
+  if (
+    scannerRunning
+  ) {
 
     return;
 
   }
 
 
-  let html = "";
+  html5QrCode =
+    new Html5Qrcode(
+      "reader"
+    );
 
 
-  coupons
-    .slice()
-    .reverse()
-    .forEach(coupon => {
+  scannerRunning =
+    true;
 
-      html += `
 
-      <div
-        style="
-        background:#fff8fa;
-        border-radius:15px;
-        padding:15px;
-        margin-bottom:12px;
-        "
-      >
+  Html5Qrcode
 
-        <strong>
-          ${coupon.name}
-        </strong>
+    .getCameras()
 
-        <br>
+    .then(
 
-        💰 NT$
-        ${coupon.amount}
+      cameras => {
 
-        <br>
+        if (
+          !cameras ||
+          cameras.length === 0
+        ) {
 
-        🎫
-        ${coupon.code}
+          throw new Error(
+            "找不到相機"
+          );
 
-        <br>
-
-        狀態：
-        ${
-          coupon.used
-          ? "❌ 已核銷"
-          : "✅ 未使用"
         }
 
-        <br>
 
-        建立時間：
-        ${coupon.createdAt}
-
-      </div>
-
-      `;
-
-    });
+        let cameraId =
+          cameras[0].id;
 
 
-  list.innerHTML = html;
+        /* 優先找後鏡頭 */
+
+        cameras.forEach(
+
+          camera => {
+
+            const label =
+              camera.label
+                .toLowerCase();
+
+
+            if (
+
+              label.includes(
+                "back"
+              )
+
+              ||
+
+              label.includes(
+                "rear"
+              )
+
+              ||
+
+              label.includes(
+                "後"
+              )
+
+            ) {
+
+              cameraId =
+                camera.id;
+
+            }
+
+          }
+
+        );
+
+
+        return html5QrCode
+          .start(
+
+            cameraId,
+
+            {
+
+              fps:
+                10,
+
+              qrbox:
+
+                {
+
+                  width:
+                    220,
+
+                  height:
+                    220
+
+                }
+
+            },
+
+
+            qrCodeMessage => {
+
+              stopScanner();
+
+              redeemCoupon(
+                qrCodeMessage
+              );
+
+            }
+
+          );
+
+      }
+
+    )
+
+    .catch(
+
+      error => {
+
+        scannerRunning =
+          false;
+
+        showRedeemResult(
+
+          false,
+
+          "❌ 無法開啟相機："
+          +
+          error.message
+
+        );
+
+      }
+
+    );
 
 }
 
+
+/* =========================
+   停止相機
+========================= */
+
+function stopScanner() {
+
+  if (
+    html5QrCode
+    &&
+    scannerRunning
+  ) {
+
+    html5QrCode
+      .stop()
+
+      .then(
+
+        () => {
+
+          scannerRunning =
+            false;
+
+          html5QrCode
+            .clear();
+
+        }
+
+      )
+
+      .catch(
+
+        () => {
+
+          scannerRunning =
+            false;
+
+        }
+
+      );
+
+  }
+
+}
+
+
 </script>
 
+
 </body>
+
 </html>
